@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>একতা একাডেমি</title>
 
   <style>
@@ -15,110 +15,19 @@
       scroll-behavior:smooth;
     }
 
-    html,body{
-      overflow-x:hidden;
-    }
-
     body{
-      background:
-      radial-gradient(circle at top left, rgba(14,59,140,0.12), transparent 35%),
-      radial-gradient(circle at bottom right, rgba(255,216,107,0.18), transparent 35%),
-      linear-gradient(135deg,#eef3ff,#f8fbff,#eef4ff);
-
+      background:linear-gradient(135deg,#eef3ff,#f7faff,#edf3ff);
       color:#222;
-      position:relative;
-      min-height:100vh;
-    }
-
-    body::before{
-      content:'';
-      position:fixed;
-      inset:0;
-      background:
-      url('data:image/webp;base64,UklGRjQqAABXRUJQVlA4ICgqAAAQXQCdASr6APoAPm02lUikIqIhJAgAsBIJaQAA3AA/v89m8lmSP/6P4v+/f6M+AA==')
-      center center/320px repeat;
-
-      opacity:0.04;
-      z-index:-3;
-      animation:bgMove 40s linear infinite;
-    }
-
-    body::after{
-      content:'';
-      position:fixed;
-      inset:0;
-      background:
-      radial-gradient(circle at 20% 20%, rgba(255,216,107,0.10), transparent 25%),
-      radial-gradient(circle at 80% 30%, rgba(14,59,140,0.10), transparent 25%),
-      radial-gradient(circle at 50% 80%, rgba(18,63,150,0.10), transparent 30%);
-      z-index:-2;
-      pointer-events:none;
-    }
-
-    .bg-circle{
-      position:fixed;
-      border-radius:50%;
-      filter:blur(80px);
-      z-index:-1;
-      opacity:0.35;
-      animation:float 10s ease-in-out infinite;
-      pointer-events:none;
-    }
-
-    .bg-circle.one{
-      width:260px;
-      height:260px;
-      background:#ffd86b;
-      top:10%;
-      left:-80px;
-    }
-
-    .bg-circle.two{
-      width:320px;
-      height:320px;
-      background:#0e3b8c;
-      bottom:0;
-      right:-100px;
-      animation-delay:3s;
-    }
-
-    .bg-circle.three{
-      width:220px;
-      height:220px;
-      background:#5d8dff;
-      top:45%;
-      left:40%;
-      animation-delay:6s;
-    }
-
-    @keyframes bgMove{
-      from{
-        transform:translateY(0);
-      }
-      to{
-        transform:translateY(-120px);
-      }
-    }
-
-    @keyframes float{
-      0%,100%{
-        transform:translateY(0px) scale(1);
-      }
-      50%{
-        transform:translateY(-25px) scale(1.05);
-      }
+      overflow-x:hidden;
     }
 
     /* ===== HEADER ===== */
 
     header{
       background:linear-gradient(135deg,#071f4e,#0e3b8c);
+      padding:22px 8%;
       color:white;
-      padding:25px 8%;
       box-shadow:0 4px 12px rgba(0,0,0,0.15);
-      position:sticky;
-      top:0;
-      z-index:999;
     }
 
     nav{
@@ -133,24 +42,22 @@
     .logo{
       display:flex;
       align-items:center;
-      justify-content:center;
-      gap:15px;
-      flex-wrap:wrap;
+      gap:12px;
     }
 
     .logo img{
-      width:70px;
-      height:70px;
+      width:65px;
+      height:65px;
       border-radius:50%;
       background:white;
       padding:5px;
+      object-fit:cover;
     }
 
     .logo h1{
-      font-size:44px;
+      font-size:38px;
       font-weight:800;
-      letter-spacing:1px;
-      background:linear-gradient(90deg,#ffffff,#ffd86b);
+      background:linear-gradient(90deg,#fff,#ffd86b);
       -webkit-background-clip:text;
       -webkit-text-fill-color:transparent;
     }
@@ -164,21 +71,23 @@
       width:100%;
     }
 
-    .menu a{
+    .menu a,
+    .login-btn{
       text-decoration:none;
       color:white;
       font-weight:700;
-      padding:12px 22px;
-      border-radius:40px;
+      padding:11px 20px;
+      border-radius:35px;
       background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.18);
-      backdrop-filter:blur(8px);
-      transition:0.35s ease;
+      border:1px solid rgba(255,255,255,0.15);
+      transition:0.3s;
+      cursor:pointer;
     }
 
-    .menu a:hover{
-      color:#071f4e;
+    .menu a:hover,
+    .login-btn:hover{
       background:#ffd86b;
+      color:#071f4e;
       transform:translateY(-3px);
     }
 
@@ -188,49 +97,47 @@
       padding:100px 8%;
       text-align:center;
       background:
-      linear-gradient(rgba(5,24,61,0.85),rgba(5,24,61,0.85)),
-      url('data:image/webp;base64,UklGRjQqAABXRUJQVlA4ICgqAAAQXQCdASr6APoAPm02lUikIqIhJAgAsBIJaQAA3AA/v89m8lmSP/6P4v+/f6M+AA==') center/420px no-repeat;
+      linear-gradient(rgba(5,24,61,0.88),rgba(5,24,61,0.88)),
+      url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1200&auto=format&fit=crop') center/cover;
       color:white;
     }
 
     .hero h2{
-      font-size:52px;
+      font-size:55px;
       margin-bottom:20px;
     }
 
     .hero p{
       max-width:850px;
       margin:auto;
-      line-height:1.8;
+      line-height:1.9;
       font-size:18px;
     }
 
     .btn{
-      margin-top:30px;
       display:inline-block;
-      padding:14px 30px;
+      margin-top:30px;
+      padding:14px 32px;
+      border-radius:40px;
       background:#ffd86b;
       color:#071f4e;
-      border-radius:40px;
       text-decoration:none;
       font-weight:700;
       transition:0.3s;
     }
 
     .btn:hover{
-      transform:translateY(-3px);
       background:white;
+      transform:translateY(-4px);
     }
 
     section{
-      padding:70px 8%;
-      position:relative;
-      z-index:2;
+      padding:80px 8%;
     }
 
     .title{
       text-align:center;
-      font-size:38px;
+      font-size:40px;
       margin-bottom:20px;
       color:#071f4e;
     }
@@ -239,26 +146,25 @@
       text-align:center;
       max-width:850px;
       margin:auto auto 45px;
-      color:#555;
       line-height:1.8;
+      color:#555;
     }
 
     /* ===== FEATURES ===== */
 
     .features{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
       gap:25px;
     }
 
     .card{
-      background:rgba(255,255,255,0.8);
-      backdrop-filter:blur(10px);
+      background:white;
       padding:30px;
       border-radius:20px;
       box-shadow:0 10px 25px rgba(0,0,0,0.08);
-      transition:0.3s;
       border-top:5px solid #0e3b8c;
+      transition:0.3s;
     }
 
     .card:hover{
@@ -266,31 +172,35 @@
     }
 
     .card h3{
-      color:#071f4e;
       margin-bottom:15px;
-      font-size:24px;
+      color:#071f4e;
+      font-size:25px;
     }
 
-    /* ===== CLASSES ===== */
+    .card p{
+      line-height:1.7;
+    }
+
+    /* ===== CLASS ===== */
 
     .classes{
       display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
       gap:25px;
     }
 
     .class-box{
-      background:linear-gradient(135deg,#0b2f75,#071f4e);
+      background:linear-gradient(135deg,#071f4e,#123f96);
       color:white;
-      padding:28px;
-      border-radius:18px;
+      padding:30px;
+      border-radius:20px;
       text-align:center;
-      box-shadow:0 8px 20px rgba(0,0,0,0.15);
       transition:0.3s;
+      box-shadow:0 10px 20px rgba(0,0,0,0.15);
     }
 
     .class-box:hover{
-      transform:translateY(-6px);
+      transform:translateY(-7px);
     }
 
     .class-box h3{
@@ -299,7 +209,7 @@
     }
 
     .class-box p{
-      line-height:1.7;
+      line-height:1.8;
     }
 
     /* ===== NOTICE ===== */
@@ -312,41 +222,28 @@
     .notice-header{
       background:linear-gradient(135deg,#071f4e,#0e3b8c);
       color:white;
-      padding:18px;
       text-align:center;
+      padding:18px;
+      border-radius:18px 18px 0 0;
       font-size:24px;
       font-weight:700;
-      border-radius:18px 18px 0 0;
     }
 
     .notice-box{
-      height:320px;
-      overflow:hidden;
-      background:rgba(255,255,255,0.75);
-      backdrop-filter:blur(10px);
-      border-radius:0 0 20px 20px;
-      padding:15px;
+      background:white;
+      padding:20px;
+      border-radius:0 0 18px 18px;
       box-shadow:0 10px 25px rgba(0,0,0,0.08);
     }
 
-    .notice-track{
-      display:flex;
-      flex-direction:column;
-      gap:15px;
-      animation:scrollNotice 18s linear infinite;
-    }
-
     .notice-item{
-      background:white;
-      padding:18px 20px;
-      border-radius:16px;
-      font-size:18px;
+      padding:18px;
+      margin-bottom:15px;
+      background:#f7faff;
+      border-left:6px solid #ffd86b;
+      border-radius:14px;
       font-weight:600;
       color:#071f4e;
-      border-left:6px solid #ffd86b;
-      display:flex;
-      align-items:center;
-      gap:12px;
       transition:0.3s;
     }
 
@@ -354,214 +251,211 @@
       transform:translateX(8px);
     }
 
-    @keyframes scrollNotice{
-      0%{
-        transform:translateY(0);
-      }
+    /* ===== LOGIN ===== */
 
-      100%{
-        transform:translateY(-50%);
-      }
+    .login-section{
+      background:linear-gradient(135deg,#071f4e,#0e3b8c,#123f96);
+      border-radius:35px;
+      color:white;
+      padding:70px 25px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+      box-shadow:0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    .login-section h2{
+      font-size:42px;
+      margin-bottom:15px;
+    }
+
+    .login-section p{
+      color:#dce7ff;
+      margin-bottom:35px;
+    }
+
+    .login-box{
+      max-width:450px;
+      margin:auto;
+      background:rgba(255,255,255,0.08);
+      backdrop-filter:blur(10px);
+      border-radius:25px;
+      padding:35px;
+      border:1px solid rgba(255,255,255,0.12);
+    }
+
+    .input-box{
+      margin-bottom:20px;
+      text-align:left;
+    }
+
+    .input-box label{
+      display:block;
+      margin-bottom:8px;
+      font-weight:600;
+    }
+
+    .input-box input{
+      width:100%;
+      padding:15px;
+      border:none;
+      border-radius:12px;
+      outline:none;
+      font-size:16px;
+    }
+
+    .submit-btn{
+      width:100%;
+      padding:15px;
+      border:none;
+      border-radius:14px;
+      background:#ffd86b;
+      color:#071f4e;
+      font-size:18px;
+      font-weight:700;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .submit-btn:hover{
+      background:white;
+      transform:translateY(-3px);
+    }
+
+    .student-panel{
+      display:none;
+      margin-top:30px;
+      background:white;
+      color:#071f4e;
+      padding:25px;
+      border-radius:20px;
+    }
+
+    .student-panel h3{
+      margin-bottom:15px;
+      font-size:28px;
+    }
+
+    .logout-btn{
+      margin-top:20px;
+      padding:12px 24px;
+      border:none;
+      border-radius:30px;
+      background:#071f4e;
+      color:white;
+      cursor:pointer;
+      font-weight:700;
     }
 
     /* ===== CONTACT ===== */
 
     .contact{
-      background:
-      linear-gradient(135deg,#071f4e,#0e3b8c,#123f96);
-
+      background:linear-gradient(135deg,#071f4e,#0e3b8c);
       color:white;
       text-align:center;
-      border-radius:35px;
       padding:80px 25px;
-      position:relative;
-      overflow:hidden;
-      box-shadow:0 20px 45px rgba(0,0,0,0.25);
-    }
-
-    .contact-glow{
-      position:absolute;
-      border-radius:50%;
-      filter:blur(70px);
-      opacity:0.25;
-    }
-
-    .contact-glow.one{
-      width:280px;
-      height:280px;
-      background:#ffd86b;
-      top:-90px;
-      left:-90px;
-    }
-
-    .contact-glow.two{
-      width:240px;
-      height:240px;
-      background:#5d8dff;
-      bottom:-20px;
-      right:-80px;
+      border-radius:35px;
+      box-shadow:0 15px 35px rgba(0,0,0,0.2);
     }
 
     .contact h2{
-      font-size:48px;
+      font-size:45px;
       margin-bottom:15px;
-      position:relative;
-      z-index:2;
-    }
-
-    .tagline{
-      font-size:20px;
-      color:#ffd86b;
-      margin-bottom:22px;
-      font-weight:600;
-      letter-spacing:2px;
-      position:relative;
-      z-index:2;
-    }
-
-    .contact-title{
-      font-size:34px;
-      margin-bottom:18px;
-      position:relative;
-      z-index:2;
     }
 
     .contact-text{
-      font-size:18px;
       margin-bottom:35px;
-      color:#e9eefc;
-      position:relative;
-      z-index:2;
+      color:#e2ebff;
     }
 
     .contact-cards{
       display:flex;
       justify-content:center;
-      align-items:center;
       gap:25px;
       flex-wrap:wrap;
-      position:relative;
-      z-index:2;
     }
 
     .contact-card{
       width:320px;
       background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.15);
-      backdrop-filter:blur(10px);
-      border-radius:24px;
       padding:22px;
+      border-radius:22px;
       display:flex;
       align-items:center;
       gap:18px;
       text-decoration:none;
       color:white;
-      transition:0.35s ease;
-      box-shadow:0 10px 25px rgba(0,0,0,0.18);
+      transition:0.3s;
     }
 
     .contact-card:hover{
-      transform:translateY(-8px) scale(1.03);
+      transform:translateY(-8px);
     }
 
-    .contact-card .icon{
+    .icon{
       width:70px;
       height:70px;
-      min-width:70px;
-      border-radius:20px;
+      border-radius:18px;
+      background:rgba(255,255,255,0.12);
       display:flex;
       justify-content:center;
       align-items:center;
-      font-size:34px;
-      background:rgba(255,255,255,0.15);
+      font-size:32px;
     }
 
-    .contact-card .info{
-      text-align:left;
-    }
-
-    .contact-card .info span{
-      display:block;
-      font-size:15px;
-      color:#d9e4ff;
-      margin-bottom:5px;
-    }
-
-    .contact-card .info h4{
-      font-size:26px;
-      font-weight:700;
-    }
-
-    .whatsapp:hover{
-      background:rgba(37,211,102,0.18);
-    }
-
-    .phone:hover{
-      background:rgba(255,216,107,0.15);
+    .info h4{
+      font-size:24px;
+      margin-top:6px;
     }
 
     /* ===== FOOTER ===== */
 
     footer{
+      margin-top:40px;
       background:#03112d;
       color:#ddd;
       text-align:center;
-      padding:20px;
-      margin-top:40px;
-      margin-bottom:0;
+      padding:22px;
     }
 
     /* ===== MOBILE ===== */
 
     @media(max-width:768px){
 
+      nav{
+        justify-content:center;
+        align-items:center;
+      }
+
       .hero h2{
-        font-size:36px;
-      }
-
-      .logo h1{
-        font-size:32px;
-      }
-
-      .title{
-        font-size:30px;
-      }
-
-      .notice-box{
-        height:280px;
-      }
-
-      .contact{
-        padding:60px 20px;
-      }
-
-      .contact h2{
         font-size:38px;
       }
 
-      .contact-title{
-        font-size:28px;
+      .logo h1{
+        font-size:30px;
+      }
+
+      .title{
+        font-size:32px;
+      }
+
+      .login-section h2{
+        font-size:34px;
+      }
+
+      .contact h2{
+        font-size:36px;
       }
 
       .contact-card{
         width:100%;
       }
 
-      .contact-card .info h4{
-        font-size:22px;
-      }
     }
 
   </style>
 </head>
-
 <body>
-
-  <!-- BACKGROUND EFFECT -->
-
-  <div class="bg-circle one"></div>
-  <div class="bg-circle two"></div>
-  <div class="bg-circle three"></div>
 
   <!-- HEADER -->
 
@@ -570,11 +464,8 @@
     <nav>
 
       <div class="logo">
-
         <img src="IMG-20260427-WA0001.jpg" alt="একতা একাডেমি">
-
         <h1>একতা একাডেমি</h1>
-
       </div>
 
       <div class="menu">
@@ -582,6 +473,7 @@
         <a href="#about">About</a>
         <a href="#courses">Courses</a>
         <a href="#notice">Notice</a>
+        <a href="#login">Student Login</a>
         <a href="#contact">Contact</a>
       </div>
 
@@ -597,7 +489,7 @@
 
     <p>
       একতা একাডেমি হলো আধুনিক ও মানসম্মত শিক্ষা প্রদানের একটি বিশ্বস্ত প্রতিষ্ঠান।
-      এখানে ক্লাস ৬ থেকে ১২ পর্যন্ত সকল বিষয়ের দক্ষ শিক্ষকদের মাধ্যমে সুন্দর ও যত্নসহকারে পাঠদান করা হয়।
+      এখানে ক্লাস ৬ থেকে ১২ পর্যন্ত সকল বিষয়ের দক্ষ শিক্ষকদের মাধ্যমে যত্নসহকারে পাঠদান করা হয়।
     </p>
 
     <a href="#courses" class="btn">কোর্স দেখুন</a>
@@ -611,7 +503,7 @@
     <h2 class="title">কেনো একতা একাডেমি সেরা?</h2>
 
     <p class="subtitle">
-      অভিজ্ঞ শিক্ষক, আধুনিক ক্লাস সিস্টেম, নিয়মিত পরীক্ষা এবং শিক্ষার্থীদের প্রতি বিশেষ যত্নের কারণে
+      অভিজ্ঞ শিক্ষক, নিয়মিত পরীক্ষা, আধুনিক ক্লাসরুম এবং শিক্ষার্থীদের বিশেষ যত্নের কারণে
       একতা একাডেমি শিক্ষার্থীদের কাছে একটি নির্ভরযোগ্য নাম।
     </p>
 
@@ -695,22 +587,49 @@
 
       <div class="notice-box">
 
-        <div class="notice-track">
+        <div class="notice-item">📌 নতুন ব্যাচে ভর্তি চলছে — সীমিত আসন।</div>
+        <div class="notice-item">📌 ক্লাস ৬-১০ এর নতুন ব্যাচ শুরু ১৫ জুন।</div>
+        <div class="notice-item">📌 SSC বিশেষ মডেল টেস্ট আগামী শুক্রবার।</div>
+        <div class="notice-item">📌 HSC ভর্তি কোচিংয়ের বিশেষ ছাড় চলছে।</div>
+        <div class="notice-item">📌 মাসিক পরীক্ষার রুটিন প্রকাশ করা হয়েছে।</div>
 
-          <div class="notice-item">📌 নতুন ব্যাচে ভর্তি চলছে — সীমিত আসন।</div>
-          <div class="notice-item">📌 ক্লাস ৬-১০ এর নতুন ব্যাচ শুরু ১৫ জুন।</div>
-          <div class="notice-item">📌 SSC বিশেষ মডেল টেস্ট আগামী শুক্রবার।</div>
-          <div class="notice-item">📌 HSC ভর্তি কোচিংয়ের বিশেষ ছাড় চলছে।</div>
-          <div class="notice-item">📌 মাসিক পরীক্ষার রুটিন প্রকাশ করা হয়েছে।</div>
+      </div>
 
-          <!-- DUPLICATE -->
+    </div>
 
-          <div class="notice-item">📌 নতুন ব্যাচে ভর্তি চলছে — সীমিত আসন।</div>
-          <div class="notice-item">📌 ক্লাস ৬-১০ এর নতুন ব্যাচ শুরু ১৫ জুন।</div>
-          <div class="notice-item">📌 SSC বিশেষ মডেল টেস্ট আগামী শুক্রবার।</div>
-          <div class="notice-item">📌 HSC ভর্তি কোচিংয়ের বিশেষ ছাড় চলছে।</div>
-          <div class="notice-item">📌 মাসিক পরীক্ষার রুটিন প্রকাশ করা হয়েছে।</div>
+  </section>
 
+  <!-- LOGIN -->
+
+  <section id="login">
+
+    <div class="login-section">
+
+      <h2>🎓 Student Login System</h2>
+
+      <p>
+        শিক্ষার্থীরা তাদের আইডি এবং পাসওয়ার্ড দিয়ে লগইন করতে পারবে।
+      </p>
+
+      <div class="login-box">
+
+        <div class="input-box">
+          <label>Student ID</label>
+          <input type="text" id="studentId" placeholder="Enter Student ID">
+        </div>
+
+        <div class="input-box">
+          <label>Password</label>
+          <input type="password" id="password" placeholder="Enter Password">
+        </div>
+
+        <button class="submit-btn" onclick="loginStudent()">Login</button>
+
+        <div class="student-panel" id="studentPanel">
+          <h3>স্বাগতম শিক্ষার্থী 🎉</h3>
+          <p>আপনি সফলভাবে লগইন করেছেন।</p>
+          <p><strong>Student ID:</strong> <span id="showId"></span></p>
+          <button class="logout-btn" onclick="logoutStudent()">Logout</button>
         </div>
 
       </div>
@@ -725,26 +644,15 @@
 
     <div class="contact">
 
-      <div class="contact-glow one"></div>
-      <div class="contact-glow two"></div>
-
       <h2>একতা একাডেমি</h2>
 
-      <div class="tagline">
-        Learn • Create • Inspire
-      </div>
-
-<p class="contact-text">
+      <p class="contact-text">
         আপনার সন্তানের সুন্দর ভবিষ্যতের বিশ্বস্ত ঠিকানা
       </p>
 
-      <h3 class="contact-title">
-        📞 যোগাযোগ করুন
-      </h3>
-
       <div class="contact-cards">
 
-        <a href="https://wa.me/8801609063574" class="contact-card whatsapp">
+        <a href="https://wa.me/8801609063574" class="contact-card">
 
           <div class="icon">💬</div>
 
@@ -755,7 +663,7 @@
 
         </a>
 
-        <a href="tel:01859608314" class="contact-card phone">
+        <a href="tel:01859608314" class="contact-card">
 
           <div class="icon">📞</div>
 
@@ -775,8 +683,46 @@
   <!-- FOOTER -->
 
   <footer>
-    © 2025 একতা একাডেমি | সকল অধিকার সংরক্ষিত
+    © 2026 একতা একাডেমি | সকল অধিকার সংরক্ষিত
   </footer>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    function loginStudent(){
+
+      let studentId=document.getElementById('studentId').value;
+      let password=document.getElementById('password').value;
+
+      if(studentId==='12345' && password==='ekota2026'){
+
+        document.getElementById('studentPanel').style.display='block';
+        document.getElementById('showId').innerText=studentId;
+
+        alert('লগইন সফল হয়েছে ✅');
+
+      }
+
+      else{
+        alert('ভুল Student ID অথবা Password ❌');
+      }
+
+    }
+
+    function logoutStudent(){
+
+      document.getElementById('studentPanel').style.display='none';
+
+      document.getElementById('studentId').value='';
+      document.getElementById('password').value='';
+
+      alert('Logout সফল হয়েছে');
+
+    }
+
+  </script>
 
 </body>
 </html>
