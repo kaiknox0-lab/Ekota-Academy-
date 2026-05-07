@@ -1,702 +1,264 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>একতা একাডেমি</title>
-
-<style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Segoe UI',sans-serif;
-  scroll-behavior:smooth;
-}
-
-body{
-  background:linear-gradient(135deg,#eef3ff,#f7faff,#edf3ff);
-  color:#222;
-  overflow-x:hidden;
-}
-
-/* ===== LOADER ===== */
-
-.loader{
-  position:fixed;
-  inset:0;
-  background:#071f4e;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-  transition:0.5s;
-}
-
-.loader.hide{
-  opacity:0;
-  visibility:hidden;
-}
-
-.loader span{
-  width:70px;
-  height:70px;
-  border:7px solid rgba(255,255,255,0.2);
-  border-top:7px solid #ffd86b;
-  border-radius:50%;
-  animation:spin 1s linear infinite;
-}
-
-/* ===== HEADER ===== */
-
-header{
-  background:linear-gradient(135deg,#071f4e,#0e3b8c);
-  padding:22px 8%;
-  color:white;
-  box-shadow:0 4px 12px rgba(0,0,0,0.15);
-}
-
-nav{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:22px;
-  text-align:center;
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.logo img{
-  width:65px;
-  height:65px;
-  border-radius:50%;
-  background:white;
-  padding:5px;
-}
-
-.logo h1{
-  font-size:38px;
-  font-weight:800;
-  background:linear-gradient(90deg,#fff,#ffd86b);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-
-.menu{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:16px;
-  flex-wrap:wrap;
-}
-
-.menu a{
-  text-decoration:none;
-  color:white;
-  font-weight:700;
-  padding:11px 20px;
-  border-radius:35px;
-  background:rgba(255,255,255,0.08);
-  transition:0.3s;
-}
-
-.menu a:hover{
-  background:#ffd86b;
-  color:#071f4e;
-}
-
-/* ===== MARQUEE ===== */
-
-.top-marquee{
-  width:92%;
-  max-width:1100px;
-  margin:18px auto 10px;
-  overflow:hidden;
-  border-radius:999px;
-  background:linear-gradient(135deg,#071f4e,#0e3b8c,#1d4ed8);
-  border:3px solid rgba(255,216,107,0.9);
-}
-
-.top-marquee marquee{
-  padding:12px;
-  color:white;
-  font-weight:700;
-}
-
-/* ===== HERO ===== */
-
-.hero{
-  padding:100px 8%;
-  text-align:center;
-  background:
-  linear-gradient(rgba(5,24,61,0.88),rgba(5,24,61,0.88)),
-  url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1200&auto=format&fit=crop') center/cover;
-  color:white;
-}
-
-.hero h2{
-  font-size:55px;
-  margin-bottom:20px;
-  animation:fadeUp 1s ease;
-}
-
-.hero p{
-  max-width:850px;
-  margin:auto;
-  line-height:1.9;
-  font-size:18px;
-  animation:fadeUp 1.3s ease;
-}
-
-.btn{
-  display:inline-block;
-  margin-top:30px;
-  padding:14px 32px;
-  border-radius:40px;
-  background:#ffd86b;
-  color:#071f4e;
-  text-decoration:none;
-  font-weight:700;
-  transition:0.3s;
-}
-
-.btn:hover{
-  transform:translateY(-4px);
-}
-
-/* ===== SECTION ===== */
-
-section{
-  padding:80px 8%;
-}
-
-.title{
-  text-align:center;
-  font-size:40px;
-  margin-bottom:20px;
-  color:#071f4e;
-}
-
-.subtitle{
-  text-align:center;
-  max-width:850px;
-  margin:auto auto 45px;
-  line-height:1.8;
-  color:#555;
-}
-
-/* ===== FEATURES ===== */
-
-.features{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:25px;
-}
-
-.card{
-  background:white;
-  padding:30px;
-  border-radius:20px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.08);
-  transition:0.4s;
-}
-
-.card:hover{
-  transform:translateY(-8px);
-}
-
-.card h3{
-  margin-bottom:15px;
-  color:#071f4e;
-}
-
-/* ===== TEACHER LINK ===== */
-
-.teacher-link-card{
-  width:100%;
-  max-width:420px;
-  margin:auto;
-  background:white;
-  padding:35px 30px;
-  border-radius:28px;
-  text-align:center;
-  text-decoration:none;
-  box-shadow:0 15px 35px rgba(0,0,0,0.08);
-  transition:0.4s;
-  position:relative;
-  overflow:hidden;
-}
-
-.teacher-link-card::before{
-  content:'';
-  position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:8px;
-  background:linear-gradient(90deg,#071f4e,#0e3b8c,#1d4ed8);
-}
-
-.teacher-link-card:hover{
-  transform:translateY(-10px);
-}
-
-.teacher-icon{
-  width:95px;
-  height:95px;
-  margin:auto;
-  border-radius:50%;
-  background:linear-gradient(135deg,#071f4e,#0e3b8c);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:42px;
-  color:white;
-  margin-bottom:22px;
-}
-
-.teacher-link-card h3{
-  color:#071f4e;
-  font-size:30px;
-  margin-bottom:15px;
-}
-
-.teacher-link-card p{
-  color:#555;
-  line-height:1.8;
-}
-
-/* ===== CLASS SECTION ===== */
-
-.classes{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:25px;
-}
-
-.class-box{
-  background:linear-gradient(135deg,#071f4e,#123f96);
-  color:white;
-  padding:30px;
-  border-radius:20px;
-  text-align:center;
-  text-decoration:none;
-  transition:0.3s;
-}
-
-.class-box:hover{
-  transform:translateY(-7px);
-}
-
-.class-box h3{
-  margin-bottom:15px;
-  font-size:28px;
-}
-
-/* ===== CONTACT ===== */
-
-.contact{
-  background:linear-gradient(135deg,#071f4e,#0e3b8c);
-  color:white;
-  text-align:center;
-  padding:80px 25px;
-  border-radius:35px;
-}
-
-.contact-cards{
-  display:flex;
-  justify-content:center;
-  gap:25px;
-  flex-wrap:wrap;
-  margin-top:35px;
-}
-
-.contact-card{
-  width:320px;
-  background:rgba(255,255,255,0.08);
-  padding:22px;
-  border-radius:22px;
-  display:flex;
-  align-items:center;
-  gap:18px;
-  text-decoration:none;
-  color:white;
-  transition:0.3s;
-}
-
-.contact-card:hover{
-  transform:scale(1.04);
-}
-
-.icon{
-  width:70px;
-  height:70px;
-  border-radius:18px;
-  background:rgba(255,255,255,0.12);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:32px;
-}
-
-.info h4{
-  font-size:24px;
-}
-
-/* ===== FOOTER ===== */
-
-footer{
-  margin-top:40px;
-  background:#03112d;
-  color:#ddd;
-  text-align:center;
-  padding:22px;
-}
-
-/* ===== SCROLL BUTTON ===== */
-
-.scroll-top{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  width:50px;
-  height:50px;
-  border:none;
-  border-radius:50%;
-  background:#071f4e;
-  color:white;
-  font-size:22px;
-  cursor:pointer;
-  display:none;
-  z-index:999;
-}
-
-/* ===== ANIMATION ===== */
-
-@keyframes spin{
-  from{
-    transform:rotate(0deg);
-  }
-  to{
-    transform:rotate(360deg);
-  }
-}
-
-@keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(30px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-/* ===== MOBILE ===== */
-
-@media(max-width:768px){
-
-.hero h2{
-  font-size:38px;
-}
-
-.logo h1{
-  font-size:30px;
-}
-
-.title{
-  font-size:32px;
-}
-
-.teacher-link-card h3{
-  font-size:24px;
-}
-
-}
-
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ekota Academy Admission</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial,sans-serif;
+    }
+
+    body{
+      background:linear-gradient(135deg,#0f172a,#1e293b);
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+    }
+
+    .container{
+      width:100%;
+      max-width:500px;
+      background:#ffffff;
+      padding:30px;
+      border-radius:20px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .logo{
+      text-align:center;
+      margin-bottom:25px;
+    }
+
+    .logo h1{
+      font-size:34px;
+      color:#0f172a;
+      margin-bottom:5px;
+    }
+
+    .logo p{
+      color:#6b7280;
+      font-size:15px;
+    }
+
+    .input-group{
+      margin-bottom:16px;
+    }
+
+    .input-group label{
+      display:block;
+      margin-bottom:6px;
+      font-weight:bold;
+      color:#111827;
+    }
+
+    .input-group input,
+    .input-group select,
+    .input-group textarea{
+      width:100%;
+      padding:13px;
+      border:1px solid #d1d5db;
+      border-radius:10px;
+      outline:none;
+      font-size:15px;
+    }
+
+    .input-group input:focus,
+    .input-group select:focus,
+    .input-group textarea:focus{
+      border-color:#2563eb;
+    }
+
+    button{
+      width:100%;
+      padding:14px;
+      border:none;
+      border-radius:10px;
+      background:#2563eb;
+      color:white;
+      font-size:16px;
+      cursor:pointer;
+      transition:0.3s;
+      font-weight:bold;
+    }
+
+    button:hover{
+      background:#1d4ed8;
+    }
+
+    .loading{
+      display:none;
+      margin-top:15px;
+      text-align:center;
+      color:#2563eb;
+      font-weight:bold;
+    }
+
+    .success{
+      display:none;
+      margin-top:15px;
+      background:#dcfce7;
+      color:#166534;
+      padding:12px;
+      border-radius:10px;
+      text-align:center;
+      font-weight:bold;
+    }
+
+    .footer{
+      margin-top:20px;
+      text-align:center;
+      color:#6b7280;
+      font-size:14px;
+    }
+
+  </style>
 </head>
-
 <body>
 
-<!-- ===== LOADER ===== -->
-
-<div class="loader" id="loader">
-<span></span>
-</div>
-
-<!-- ===== HEADER ===== -->
-
-<header>
-
-<nav>
-
-<div class="logo">
-<img src="IMG-20260427-WA0001.jpg" alt="">
-<h1>একতা একাডেমি</h1>
-</div>
-
-<div class="menu">
-<a href="#home">Home</a>
-<a href="#about">About</a>
-<a href="#teachers">Teachers</a>
-<a href="#courses">Courses</a>
-<a href="login.html">Log In</a>
-<a href="#contact">Contact</a>
-</div>
-
-</nav>
-
-<div class="top-marquee">
-
-<marquee behavior="scroll" direction="left">
-
-একতা একাডেমিতে নতুন ব্যাচে ভর্তি চলছে • SSC ও HSC বিশেষ কোচিং শুরু • সীমিত আসনে ভর্তি চলছে
-
-</marquee>
-
-</div>
-
-</header>
-
-<!-- ===== HERO ===== -->
-
-<section class="hero" id="home">
-
-<h2>স্বপ্ন পূরণের সেরা শিক্ষা প্রতিষ্ঠান</h2>
-
-<p>
-একতা একাডেমি হলো আধুনিক ও মানসম্মত শিক্ষা প্রদানের একটি বিশ্বস্ত প্রতিষ্ঠান।
-এখানে ক্লাস ৬ থেকে ১২ পর্যন্ত সকল বিষয়ের দক্ষ শিক্ষকদের মাধ্যমে যত্নসহকারে পাঠদান করা হয়।
-</p>
-
-<a href="#courses" class="btn">কোর্স দেখুন</a>
-
-</section>
-
-<!-- ===== ABOUT ===== -->
-
-<section id="about">
-
-<h2 class="title">কেনো একতা একাডেমি সেরা?</h2>
-
-<p class="subtitle">
-অভিজ্ঞ শিক্ষক, নিয়মিত পরীক্ষা, আধুনিক ক্লাসরুম এবং শিক্ষার্থীদের বিশেষ যত্নের কারণে
-একতা একাডেমি শিক্ষার্থীদের কাছে একটি নির্ভরযোগ্য নাম।
-</p>
-
-<div class="features">
-
-<div class="card">
-<h3>অভিজ্ঞ শিক্ষক</h3>
-<p>প্রতিটি বিষয়ের জন্য রয়েছে দক্ষ ও অভিজ্ঞ শিক্ষক।</p>
-</div>
-
-<div class="card">
-<h3>নিয়মিত পরীক্ষা</h3>
-<p>প্রতিমাসে পরীক্ষা ও মূল্যায়নের মাধ্যমে অগ্রগতি পর্যবেক্ষণ।</p>
-</div>
-
-<div class="card">
-<h3>আধুনিক পরিবেশ</h3>
-<p>সুন্দর ও আধুনিক শিক্ষার পরিবেশ শিক্ষার্থীদের মনোযোগ বাড়ায়।</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- ===== TEACHERS ===== -->
-
-<section id="teachers">
-
-<h2 class="title">অভিজ্ঞ শিক্ষকসমূহ</h2>
-
-<p class="subtitle">
-একতা একাডেমির দক্ষ ও অভিজ্ঞ শিক্ষকবৃন্দ শিক্ষার্থীদের সঠিকভাবে গাইড করেন।
-</p>
-
-<div class="features">
-
-<a href="teachers.html" class="teacher-link-card">
-
-<div class="teacher-icon">
-👨‍🏫
-</div>
-
-<h3>শিক্ষকদের তালিকা দেখুন</h3>
-
-<p>
-সকল শিক্ষকের নাম, বিষয়, অভিজ্ঞতা ও ছবি দেখতে এখানে ক্লিক করুন।
-</p>
-
-</a>
-
-</div>
-
-</section>
-
-<!-- ===== COURSES ===== -->
-
-<section id="courses">
-
-<h2 class="title">Class Section</h2>
-
-<p class="subtitle">
-ক্লাস ৬ থেকে ১২ পর্যন্ত সকল বিভাগের বিষয় পড়ানো হয়।
-</p>
-
-<div class="classes">
-
-<a href="login.html" class="class-box">
-<h3>Class 6</h3>
-<p>বাংলা, ইংরেজি, গণিত ও বিজ্ঞান।</p>
-</a>
-
-<a href="login.html" class="class-box">
-<h3>Class 7</h3>
-<p>সকল সাধারণ ও সৃজনশীল বিষয়।</p>
-</a>
-
-<a href="login.html" class="class-box">
-<h3>Class 8</h3>
-<p>জুনিয়র বৃত্তি ও স্কুল প্রস্তুতি।</p>
-</a>
-
-<a href="login.html" class="class-box">
-<h3>Class 9-10</h3>
-<p>SSC পরীক্ষার সম্পূর্ণ প্রস্তুতি।</p>
-</a>
-
-<a href="login.html" class="class-box">
-<h3>Class 11-12</h3>
-<p>HSC ও ভর্তি পরীক্ষার কোচিং।</p>
-</a>
-
-</div>
-
-</section>
-
-<!-- ===== CONTACT ===== -->
-
-<section id="contact">
-
-<div class="contact">
-
-<h2>একতা একাডেমি</h2>
-
-<p>
-আপনার সন্তানের সুন্দর ভবিষ্যতের বিশ্বস্ত ঠিকানা
-</p>
-
-<div class="contact-cards">
-
-<a href="https://wa.me/8801609063574" class="contact-card">
-
-<div class="icon">💬</div>
-
-<div class="info">
-<span>WhatsApp</span>
-<h4>01609063574</h4>
-</div>
-
-</a>
-
-<a href="tel:01859608314" class="contact-card">
-
-<div class="icon">📞</div>
-
-<div class="info">
-<span>Direct Contact</span>
-<h4>01859608314</h4>
-</div>
-
-</a>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ===== FOOTER ===== -->
-
-<footer>
-© 2026 একতা একাডেমি | সকল অধিকার সংরক্ষিত
-</footer>
-
-<!-- ===== SCROLL TOP BUTTON ===== -->
-
-<button class="scroll-top" id="scrollTopBtn">
-↑
-</button>
-
-<!-- ===== JAVASCRIPT ===== -->
+  <div class="container">
+
+    <div class="logo">
+      <h1>Ekota Academy</h1>
+      <p>Online Student Admission Form</p>
+    </div>
+
+    <form id="studentForm">
+
+      <div class="input-group">
+        <label>Student Name</label>
+        <input type="text" id="name" placeholder="Enter student name" required>
+      </div>
+
+      <div class="input-group">
+        <label>Father Name</label>
+        <input type="text" id="father" placeholder="Enter father name" required>
+      </div>
+
+      <div class="input-group">
+        <label>Mother Name</label>
+        <input type="text" id="mother" placeholder="Enter mother name" required>
+      </div>
+
+      <div class="input-group">
+        <label>Phone Number</label>
+        <input type="tel" id="phone" placeholder="01XXXXXXXXX" required>
+      </div>
+
+      <div class="input-group">
+        <label>Select Class</label>
+
+        <select id="studentClass" required>
+          <option value="">Choose Class</option>
+          <option>Play</option>
+          <option>Nursery</option>
+          <option>KG</option>
+          <option>Class 1</option>
+          <option>Class 2</option>
+          <option>Class 3</option>
+          <option>Class 4</option>
+          <option>Class 5</option>
+          <option>Class 6</option>
+          <option>Class 7</option>
+          <option>Class 8</option>
+          <option>Class 9</option>
+          <option>Class 10</option>
+        </select>
+
+      </div>
+
+      <div class="input-group">
+        <label>Address</label>
+        <textarea id="address" rows="4" placeholder="Enter address"></textarea>
+      </div>
+
+      <button type="submit" id="submitBtn">
+        Submit Admission
+      </button>
+
+      <div class="loading" id="loading">
+        Saving Student Data...
+      </div>
+
+      <div class="success" id="success">
+        Admission Submitted Successfully ✅
+      </div>
+
+    </form>
+
+    <div class="footer">
+      © 2026 Ekota Academy
+    </div>
+
+  </div>
 
 <script>
 
-/* ===== LOADER ===== */
+const SCRIPT_URL = "PASTE_YOUR_GOOGLE_SCRIPT_URL_HERE";
 
-window.addEventListener('load', function(){
+const form = document.getElementById("studentForm");
+const loading = document.getElementById("loading");
+const success = document.getElementById("success");
+const submitBtn = document.getElementById("submitBtn");
 
-  const loader = document.getElementById('loader');
+form.addEventListener("submit", async (e) => {
 
-  setTimeout(() => {
-    loader.classList.add('hide');
-  }, 800);
+  e.preventDefault();
 
-});
+  loading.style.display = "block";
+  success.style.display = "none";
+  submitBtn.disabled = true;
 
-/* ===== SCROLL BUTTON ===== */
+  const formData = {
+    name: document.getElementById("name").value,
+    father: document.getElementById("father").value,
+    mother: document.getElementById("mother").value,
+    phone: document.getElementById("phone").value,
+    studentClass: document.getElementById("studentClass").value,
+    address: document.getElementById("address").value
+  };
 
-const scrollTopBtn = document.getElementById('scrollTopBtn');
+  try {
 
-window.addEventListener('scroll', function(){
-
-  if(window.scrollY > 300){
-    scrollTopBtn.style.display = 'block';
-  }
-  else{
-    scrollTopBtn.style.display = 'none';
-  }
-
-});
-
-/* ===== CLICK TO TOP ===== */
-
-scrollTopBtn.addEventListener('click', function(){
-
-  window.scrollTo({
-    top:0,
-    behavior:'smooth'
-  });
-
-});
-
-/* ===== ACTIVE MENU ===== */
-
-const menuLinks = document.querySelectorAll('.menu a');
-
-menuLinks.forEach(link => {
-
-  link.addEventListener('click', function(){
-
-    menuLinks.forEach(item => {
-      item.style.background = 'rgba(255,255,255,0.08)';
-      item.style.color = 'white';
+    const response = await fetch(SCRIPT_URL, {
+      method: "POST",
+      body: JSON.stringify(formData)
     });
 
-    this.style.background = '#ffd86b';
-    this.style.color = '#071f4e';
+    const result = await response.json();
 
-  });
+    loading.style.display = "none";
+
+    if(result.result === "success"){
+
+      success.style.display = "block";
+
+      form.reset();
+
+    } else {
+
+      alert("Error Saving Data");
+
+    }
+
+  } catch(error){
+
+    loading.style.display = "none";
+
+    alert("Connection Error");
+
+    console.error(error);
+
+  }
+
+  submitBtn.disabled = false;
 
 });
 
