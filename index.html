@@ -461,7 +461,7 @@ footer{
 
 <marquee behavior="scroll" direction="left" id="mainMarquee">
 
-একতা একাডেমিতে নতুন ব্যাচে ভর্তি চলছে • SSC ও HSC বিশেষ কোচিং শুরু • সীমিত আসনে ভর্তি চলছে
+লোড হচ্ছে...
 
 </marquee>
 
@@ -703,15 +703,54 @@ menuLinks.forEach(link => {
 
 });
 
-/* ===== LOAD MARQUEE TEXT ===== */
+/* ===== LOAD NOTICE FROM notice.html ===== */
 
-const savedNotice = localStorage.getItem('ekota_notice');
+fetch('notice.html')
 
-if(savedNotice){
+.then(response => response.text())
 
-  document.getElementById('mainMarquee').innerText = savedNotice;
+.then(data => {
 
-}
+  const parser = new DOMParser();
+
+  const doc = parser.parseFromString(data, 'text/html');
+
+  const noticeTexts = doc.querySelectorAll('.notice-text');
+
+  let marqueeText = '';
+
+  noticeTexts.forEach((item,index)=>{
+
+    marqueeText += item.innerText;
+
+    if(index !== noticeTexts.length - 1){
+
+      marqueeText += ' • ';
+
+    }
+
+  });
+
+  if(marqueeText.trim() !== ''){
+
+    document.getElementById('mainMarquee').innerText = marqueeText;
+
+  }
+  else{
+
+    document.getElementById('mainMarquee').innerText =
+    'এখনো কোনো নোটিশ যোগ করা হয়নি';
+
+  }
+
+})
+
+.catch(() => {
+
+  document.getElementById('mainMarquee').innerText =
+  'নোটিশ লোড করা যায়নি';
+
+});
 
 </script>
 
