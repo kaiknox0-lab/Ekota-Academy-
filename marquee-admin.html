@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notice Panel | একতা একাডেমি</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:25px;
+  background:
+  linear-gradient(rgba(5,24,61,0.88),rgba(5,24,61,0.88)),
+  url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop') center/cover;
+}
+
+/* ===== MAIN BOX ===== */
+
+.container{
+  width:100%;
+  max-width:760px;
+  background:white;
+  border-radius:30px;
+  overflow:hidden;
+  box-shadow:0 20px 45px rgba(0,0,0,0.25);
+  animation:fade 0.7s ease;
+}
+
+/* ===== TOP ===== */
+
+.top{
+  padding:35px;
+  background:linear-gradient(135deg,#071f4e,#0e3b8c,#1d4ed8);
+  color:white;
+  text-align:center;
+}
+
+.top h1{
+  font-size:42px;
+  margin-bottom:12px;
+}
+
+.top p{
+  line-height:1.8;
+  opacity:0.95;
+}
+
+/* ===== CONTENT ===== */
+
+.content{
+  padding:35px;
+}
+
+label{
+  display:block;
+  margin-bottom:14px;
+  font-size:22px;
+  font-weight:700;
+  color:#071f4e;
+}
+
+textarea{
+  width:100%;
+  height:190px;
+  border:none;
+  outline:none;
+  resize:none;
+  border-radius:22px;
+  background:#eef3ff;
+  padding:22px;
+  font-size:18px;
+  line-height:1.9;
+  box-shadow:inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* ===== BUTTONS ===== */
+
+.buttons{
+  display:flex;
+  gap:18px;
+  margin-top:28px;
+  flex-wrap:wrap;
+}
+
+button{
+  flex:1;
+  padding:17px;
+  border:none;
+  border-radius:18px;
+  font-size:18px;
+  font-weight:700;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.save-btn{
+  background:linear-gradient(135deg,#071f4e,#0e3b8c);
+  color:white;
+}
+
+.save-btn:hover{
+  transform:translateY(-4px);
+}
+
+.reset-btn{
+  background:#ffd86b;
+  color:#071f4e;
+}
+
+.reset-btn:hover{
+  transform:translateY(-4px);
+}
+
+/* ===== SUCCESS ===== */
+
+.success{
+  margin-top:20px;
+  padding:14px;
+  border-radius:14px;
+  background:#e7ffe9;
+  color:green;
+  font-weight:700;
+  display:none;
+  text-align:center;
+}
+
+/* ===== PREVIEW ===== */
+
+.preview{
+  margin-top:35px;
+}
+
+.preview h2{
+  color:#071f4e;
+  margin-bottom:18px;
+  font-size:28px;
+}
+
+/* ===== MARQUEE ===== */
+
+.marquee-box{
+  border-radius:999px;
+  overflow:hidden;
+  background:linear-gradient(135deg,#071f4e,#0e3b8c,#1d4ed8);
+  border:3px solid #ffd86b;
+  box-shadow:0 10px 25px rgba(0,0,0,0.12);
+}
+
+.marquee-box marquee{
+  padding:14px;
+  color:white;
+  font-weight:700;
+  font-size:18px;
+}
+
+/* ===== BOTTOM ===== */
+
+.bottom{
+  margin-top:35px;
+  display:flex;
+  justify-content:center;
+}
+
+.back-btn{
+  text-decoration:none;
+  background:#071f4e;
+  color:white;
+  padding:15px 32px;
+  border-radius:40px;
+  font-weight:700;
+  transition:0.3s;
+}
+
+.back-btn:hover{
+  transform:translateY(-4px);
+  background:#0e3b8c;
+}
+
+/* ===== ANIMATION ===== */
+
+@keyframes fade{
+
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:768px){
+
+.top h1{
+  font-size:30px;
+}
+
+label{
+  font-size:20px;
+}
+
+textarea{
+  height:170px;
+  font-size:16px;
+}
+
+button{
+  width:100%;
+}
+
+.preview h2{
+  font-size:24px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- ===== TOP ===== -->
+
+<div class="top">
+
+<h1>Notice Panel</h1>
+
+<p>
+এখান থেকে নতুন Notice লিখলেই তা আপনার Website এর marquee তে দেখাবে।
+</p>
+
+</div>
+
+<!-- ===== CONTENT ===== -->
+
+<div class="content">
+
+<label>নতুন Notice লিখুন</label>
+
+<textarea id="noticeInput"></textarea>
+
+<div class="buttons">
+
+<button class="save-btn" onclick="saveNotice()">
+💾 Save Notice
+</button>
+
+<button class="reset-btn" onclick="resetNotice()">
+♻ Reset Notice
+</button>
+
+</div>
+
+<div class="success" id="successMsg">
+✅ Notice Successfully Updated
+</div>
+
+<!-- ===== PREVIEW ===== -->
+
+<div class="preview">
+
+<h2>Live Preview</h2>
+
+<div class="marquee-box">
+
+<marquee behavior="scroll" direction="left" id="previewMarquee">
+
+একতা একাডেমিতে নতুন ব্যাচে ভর্তি চলছে • SSC ও HSC বিশেষ কোচিং শুরু • সীমিত আসনে ভর্তি চলছে
+
+</marquee>
+
+</div>
+
+</div>
+
+<!-- ===== BOTTOM ===== -->
+
+<div class="bottom">
+
+<a href="index.html" class="back-btn">
+← Back To Website
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* ===== DEFAULT NOTICE ===== */
+
+const defaultNotice =
+"একতা একাডেমিতে নতুন ব্যাচে ভর্তি চলছে • SSC ও HSC বিশেষ কোচিং শুরু • সীমিত আসনে ভর্তি চলছে";
+
+/* ===== ELEMENTS ===== */
+
+const noticeInput = document.getElementById('noticeInput');
+const previewMarquee = document.getElementById('previewMarquee');
+const successMsg = document.getElementById('successMsg');
+
+/* ===== LOAD SAVED NOTICE ===== */
+
+const savedNotice = localStorage.getItem('ekota_notice');
+
+if(savedNotice){
+
+  noticeInput.value = savedNotice;
+  previewMarquee.innerText = savedNotice;
+
+}
+else{
+
+  noticeInput.value = defaultNotice;
+  previewMarquee.innerText = defaultNotice;
+
+}
+
+/* ===== LIVE PREVIEW ===== */
+
+noticeInput.addEventListener('input', function(){
+
+  previewMarquee.innerText = this.value;
+
+});
+
+/* ===== SAVE NOTICE ===== */
+
+function saveNotice(){
+
+  const noticeText = noticeInput.value.trim();
+
+  if(noticeText === ''){
+
+    alert('দয়া করে একটি Notice লিখুন');
+    return;
+
+  }
+
+  localStorage.setItem('ekota_notice', noticeText);
+
+  successMsg.style.display = 'block';
+
+  setTimeout(() => {
+
+    successMsg.style.display = 'none';
+
+  }, 2500);
+
+}
+
+/* ===== RESET NOTICE ===== */
+
+function resetNotice(){
+
+  noticeInput.value = defaultNotice;
+
+  previewMarquee.innerText = defaultNotice;
+
+  localStorage.setItem('ekota_notice', defaultNotice);
+
+  successMsg.style.display = 'block';
+
+  successMsg.innerHTML = '♻ Notice Reset Successfully';
+
+  setTimeout(() => {
+
+    successMsg.style.display = 'none';
+
+    successMsg.innerHTML = '✅ Notice Successfully Updated';
+
+  }, 2500);
+
+}
+
+</script>
+
+</body>
+</html>
