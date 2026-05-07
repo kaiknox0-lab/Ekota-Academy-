@@ -1,836 +1,433 @@
+<!-- =========================
+FILE: index.html
+========================= -->
+
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>একতা একাডেমি</title>
-
-  <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family:'Segoe UI',sans-serif;
-      scroll-behavior:smooth;
-    }
-
-    body{
-      background:linear-gradient(135deg,#eef3ff,#f7faff,#edf3ff);
-      color:#222;
-      overflow-x:hidden;
-    }
-
-    /* ===== TOP MARQUEE ===== */
-
-    .top-marquee{
-      width:92%;
-      max-width:1100px;
-      margin:18px auto 10px;
-      display:flex;
-      align-items:center;
-      overflow:hidden;
-      position:relative;
-      border-radius:999px;
-      background:linear-gradient(135deg,#071f4e,#0e3b8c,#1d4ed8);
-      background-size:300% 300%;
-      animation:marqueeGlow 10s ease infinite;
-      border:3px solid rgba(255,216,107,0.9);
-      box-shadow:
-      0 10px 25px rgba(0,0,0,0.18),
-      0 0 25px rgba(93,141,255,0.25);
-    }
-
-    .top-marquee::before{
-      content:'';
-      position:absolute;
-      inset:0;
-      background:linear-gradient(120deg,transparent,rgba(255,255,255,0.18),transparent);
-      animation:shine 4s linear infinite;
-      z-index:1;
-    }
-
-    .marquee-label{
-      position:relative;
-      z-index:2;
-      background:linear-gradient(135deg,#ffd86b,#ffb703);
-      color:#071f4e;
-      padding:11px 24px;
-      font-size:15px;
-      font-weight:900;
-      letter-spacing:1px;
-      text-transform:uppercase;
-      border-radius:999px;
-      margin-left:6px;
-      box-shadow:0 0 15px rgba(255,216,107,0.45);
-      white-space:nowrap;
-    }
-
-    .top-marquee marquee{
-      position:relative;
-      z-index:2;
-      flex:1;
-      padding:11px 18px;
-      color:#ffffff;
-      font-size:15px;
-      font-weight:700;
-      letter-spacing:0.4px;
-      text-shadow:0 2px 8px rgba(0,0,0,0.35);
-    }
-
-    @keyframes marqueeGlow{
-      0%{
-        background-position:0% 50%;
-      }
-
-      50%{
-        background-position:100% 50%;
-      }
-
-      100%{
-        background-position:0% 50%;
-      }
-    }
-
-    @keyframes shine{
-      0%{
-        transform:translateX(-120%);
-      }
-
-      100%{
-        transform:translateX(120%);
-      }
-    }
-
-    /* ===== HEADER ===== */
-
-    header{
-      background:linear-gradient(135deg,#071f4e,#0e3b8c);
-      padding:22px 8%;
-      color:white;
-      box-shadow:0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    nav{
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      align-items:center;
-      gap:22px;
-      text-align:center;
-    }
-
-    .logo{
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-
-    .logo img{
-      width:65px;
-      height:65px;
-      border-radius:50%;
-      background:white;
-      padding:5px;
-      object-fit:cover;
-    }
-
-    .logo h1{
-      font-size:38px;
-      font-weight:800;
-      background:linear-gradient(90deg,#fff,#ffd86b);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-    }
-
-    .menu{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:16px;
-      flex-wrap:wrap;
-      width:100%;
-    }
-
-    .menu a,
-    .login-btn{
-      text-decoration:none;
-      color:white;
-      font-weight:700;
-      padding:11px 20px;
-      border-radius:35px;
-      background:rgba(255,255,255,0.08);
-      border:1px solid rgba(255,255,255,0.15);
-      transition:0.3s;
-      cursor:pointer;
-    }
-
-    .menu a:hover,
-    .login-btn:hover{
-      background:#ffd86b;
-      color:#071f4e;
-      transform:translateY(-3px);
-    }
-
-    /* ===== HERO ===== */
-
-    .hero{
-      padding:100px 8%;
-      text-align:center;
-      background:
-      linear-gradient(rgba(5,24,61,0.88),rgba(5,24,61,0.88)),
-      url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1200&auto=format&fit=crop') center/cover;
-      color:white;
-    }
-
-    .hero h2{
-      font-size:55px;
-      margin-bottom:20px;
-    }
-
-    .hero p{
-      max-width:850px;
-      margin:auto;
-      line-height:1.9;
-      font-size:18px;
-    }
-
-    .btn{
-      display:inline-block;
-      margin-top:30px;
-      padding:14px 32px;
-      border-radius:40px;
-      background:#ffd86b;
-      color:#071f4e;
-      text-decoration:none;
-      font-weight:700;
-      transition:0.3s;
-    }
-
-    .btn:hover{
-      background:white;
-      transform:translateY(-4px);
-    }
-
-    section{
-      padding:80px 8%;
-    }
-
-    .title{
-      text-align:center;
-      font-size:40px;
-      margin-bottom:20px;
-      color:#071f4e;
-    }
-
-    .subtitle{
-      text-align:center;
-      max-width:850px;
-      margin:auto auto 45px;
-      line-height:1.8;
-      color:#555;
-    }
-
-    /* ===== FEATURES ===== */
-
-    .features{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-      gap:25px;
-    }
-
-    .card{
-      background:white;
-      padding:30px;
-      border-radius:20px;
-      box-shadow:0 10px 25px rgba(0,0,0,0.08);
-      border-top:5px solid #0e3b8c;
-      transition:0.3s;
-    }
-
-    .card:hover{
-      transform:translateY(-8px);
-    }
-
-    .card h3{
-      margin-bottom:15px;
-      color:#071f4e;
-      font-size:25px;
-    }
-
-    .card p{
-      line-height:1.7;
-    }
-
-    /* ===== CLASS ===== */
-
-    .classes{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-      gap:25px;
-    }
-
-    .class-box{
-      background:linear-gradient(135deg,#071f4e,#123f96);
-      color:white;
-      padding:30px;
-      border-radius:20px;
-      text-align:center;
-      transition:0.3s;
-      box-shadow:0 10px 20px rgba(0,0,0,0.15);
-    }
-
-    .class-box:hover{
-      transform:translateY(-7px);
-    }
-
-    .class-box h3{
-      margin-bottom:15px;
-      font-size:28px;
-    }
-
-    .class-box p{
-      line-height:1.8;
-    }
-
-    /* ===== NOTICE ===== */
-
-    .notice-wrapper{
-      max-width:850px;
-      margin:auto;
-    }
-
-    .notice-header{
-      background:linear-gradient(135deg,#071f4e,#0e3b8c);
-      color:white;
-      text-align:center;
-      padding:18px;
-      border-radius:18px 18px 0 0;
-      font-size:24px;
-      font-weight:700;
-    }
-
-    .notice-box{
-      background:white;
-      padding:20px;
-      border-radius:0 0 18px 18px;
-      box-shadow:0 10px 25px rgba(0,0,0,0.08);
-    }
-
-    .notice-item{
-      padding:18px;
-      margin-bottom:15px;
-      background:#f7faff;
-      border-left:6px solid #ffd86b;
-      border-radius:14px;
-      font-weight:600;
-      color:#071f4e;
-      transition:0.3s;
-    }
-
-    .notice-item:hover{
-      transform:translateX(8px);
-    }
-
-    /* ===== LOGIN ===== */
-
-    .login-section{
-      background:linear-gradient(135deg,#071f4e,#0e3b8c,#123f96);
-      border-radius:35px;
-      color:white;
-      padding:70px 25px;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-      box-shadow:0 15px 40px rgba(0,0,0,0.2);
-    }
-
-    .login-section h2{
-      font-size:42px;
-      margin-bottom:15px;
-    }
-
-    .login-section p{
-      color:#dce7ff;
-      margin-bottom:35px;
-    }
-
-    .login-box{
-      max-width:450px;
-      margin:auto;
-      background:rgba(255,255,255,0.08);
-      backdrop-filter:blur(10px);
-      border-radius:25px;
-      padding:35px;
-      border:1px solid rgba(255,255,255,0.12);
-    }
-
-    .input-box{
-      margin-bottom:20px;
-      text-align:left;
-    }
-
-    .input-box label{
-      display:block;
-      margin-bottom:8px;
-      font-weight:600;
-    }
-
-    .input-box input{
-      width:100%;
-      padding:15px;
-      border:none;
-      border-radius:12px;
-      outline:none;
-      font-size:16px;
-    }
-
-    .submit-btn{
-      width:100%;
-      padding:15px;
-      border:none;
-      border-radius:14px;
-      background:#ffd86b;
-      color:#071f4e;
-      font-size:18px;
-      font-weight:700;
-      cursor:pointer;
-      transition:0.3s;
-    }
-
-    .submit-btn:hover{
-      background:white;
-      transform:translateY(-3px);
-    }
-
-    .student-panel{
-      display:none;
-      margin-top:30px;
-      background:white;
-      color:#071f4e;
-      padding:25px;
-      border-radius:20px;
-    }
-
-    .student-panel h3{
-      margin-bottom:15px;
-      font-size:28px;
-    }
-
-    .logout-btn{
-      margin-top:20px;
-      padding:12px 24px;
-      border:none;
-      border-radius:30px;
-      background:#071f4e;
-      color:white;
-      cursor:pointer;
-      font-weight:700;
-    }
-
-    /* ===== CONTACT ===== */
-
-    .contact{
-      background:linear-gradient(135deg,#071f4e,#0e3b8c);
-      color:white;
-      text-align:center;
-      padding:80px 25px;
-      border-radius:35px;
-      box-shadow:0 15px 35px rgba(0,0,0,0.2);
-    }
-
-    .contact h2{
-      font-size:45px;
-      margin-bottom:15px;
-    }
-
-    .contact-text{
-      margin-bottom:35px;
-      color:#e2ebff;
-    }
-
-    .contact-cards{
-      display:flex;
-      justify-content:center;
-      gap:25px;
-      flex-wrap:wrap;
-    }
-
-    .contact-card{
-      width:320px;
-      background:rgba(255,255,255,0.08);
-      padding:22px;
-      border-radius:22px;
-      display:flex;
-      align-items:center;
-      gap:18px;
-      text-decoration:none;
-      color:white;
-      transition:0.3s;
-    }
-
-    .contact-card:hover{
-      transform:translateY(-8px);
-    }
-
-    .icon{
-      width:70px;
-      height:70px;
-      border-radius:18px;
-      background:rgba(255,255,255,0.12);
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      font-size:32px;
-    }
-
-    .info h4{
-      font-size:24px;
-      margin-top:6px;
-    }
-
-    /* ===== FOOTER ===== */
-
-    footer{
-      margin-top:40px;
-      background:#03112d;
-      color:#ddd;
-      text-align:center;
-      padding:22px;
-    }
-
-    /* ===== MOBILE ===== */
-
-    @media(max-width:768px){
-
-      .top-marquee{
-        width:94%;
-        border-radius:999px;
-        flex-direction:column;
-        align-items:flex-start;
-      }
-
-      .marquee-label{
-        width:100%;
-        text-align:center;
-      }
-
-      .top-marquee marquee{
-        width:100%;
-        font-size:15px;
-      }
-
-      nav{
-        justify-content:center;
-        align-items:center;
-      }
-
-      .hero h2{
-        font-size:38px;
-      }
-
-      .logo h1{
-        font-size:30px;
-      }
-
-      .title{
-        font-size:32px;
-      }
-
-      .login-section h2{
-        font-size:34px;
-      }
-
-      .contact h2{
-        font-size:36px;
-      }
-
-      .contact-card{
-        width:100%;
-      }
-
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>একতা একাডেমি</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+  scroll-behavior:smooth;
+}
+
+body{
+  background:linear-gradient(135deg,#eef3ff,#f7faff,#edf3ff);
+  overflow-x:hidden;
+}
+
+/* HEADER */
+
+header{
+  background:linear-gradient(135deg,#071f4e,#0e3b8c);
+  padding:22px 8%;
+  color:white;
+}
+
+nav{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:22px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo img{
+  width:65px;
+  height:65px;
+  border-radius:50%;
+  background:white;
+  padding:5px;
+}
+
+.logo h1{
+  font-size:38px;
+  font-weight:800;
+  background:linear-gradient(90deg,#fff,#ffd86b);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.menu{
+  display:flex;
+  justify-content:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+.menu a{
+  text-decoration:none;
+  color:white;
+  font-weight:700;
+  padding:11px 20px;
+  border-radius:35px;
+  background:rgba(255,255,255,0.08);
+  transition:0.3s;
+}
+
+.menu a:hover{
+  background:#ffd86b;
+  color:#071f4e;
+}
+
+/* MARQUEE */
+
+.top-marquee{
+  width:92%;
+  max-width:1100px;
+  margin:18px auto 10px;
+  overflow:hidden;
+  border-radius:999px;
+  background:linear-gradient(135deg,#071f4e,#0e3b8c,#1d4ed8);
+  border:3px solid rgba(255,216,107,0.9);
+}
+
+.top-marquee marquee{
+  padding:12px;
+  color:white;
+  font-weight:700;
+}
+
+/* HERO */
+
+.hero{
+  padding:100px 8%;
+  text-align:center;
+  background:
+  linear-gradient(rgba(5,24,61,0.88),rgba(5,24,61,0.88)),
+  url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1200&auto=format&fit=crop') center/cover;
+  color:white;
+}
+
+.hero h2{
+  font-size:55px;
+  margin-bottom:20px;
+}
+
+.hero p{
+  max-width:850px;
+  margin:auto;
+  line-height:1.9;
+  font-size:18px;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:14px 32px;
+  border-radius:40px;
+  background:#ffd86b;
+  color:#071f4e;
+  text-decoration:none;
+  font-weight:700;
+}
+
+/* SECTION */
+
+section{
+  padding:80px 8%;
+}
+
+.title{
+  text-align:center;
+  font-size:40px;
+  margin-bottom:20px;
+  color:#071f4e;
+}
+
+.subtitle{
+  text-align:center;
+  max-width:850px;
+  margin:auto auto 45px;
+  line-height:1.8;
+  color:#555;
+}
+
+/* FEATURES */
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card h3{
+  margin-bottom:15px;
+  color:#071f4e;
+}
+
+/* CLASSES */
+
+.classes{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+}
+
+.class-box{
+  background:linear-gradient(135deg,#071f4e,#123f96);
+  color:white;
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  text-decoration:none;
+  transition:0.3s;
+}
+
+.class-box:hover{
+  transform:translateY(-7px);
+}
+
+.class-box h3{
+  margin-bottom:15px;
+  font-size:28px;
+}
+
+/* CONTACT */
+
+.contact{
+  background:linear-gradient(135deg,#071f4e,#0e3b8c);
+  color:white;
+  text-align:center;
+  padding:80px 25px;
+  border-radius:35px;
+}
+
+.contact-cards{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  flex-wrap:wrap;
+  margin-top:35px;
+}
+
+.contact-card{
+  width:320px;
+  background:rgba(255,255,255,0.08);
+  padding:22px;
+  border-radius:22px;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  text-decoration:none;
+  color:white;
+}
+
+.icon{
+  width:70px;
+  height:70px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.12);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:32px;
+}
+
+.info h4{
+  font-size:24px;
+}
+
+/* FOOTER */
+
+footer{
+  margin-top:40px;
+  background:#03112d;
+  color:#ddd;
+  text-align:center;
+  padding:22px;
+}
+
+@media(max-width:768px){
+
+.hero h2{
+  font-size:38px;
+}
+
+.logo h1{
+  font-size:30px;
+}
+
+.title{
+  font-size:32px;
+}
+
+}
+
+</style>
 </head>
+
 <body>
-  
-  <!-- HEADER -->
 
-  <header>
+<header>
 
-    <nav>
+<nav>
 
-      <div class="logo">
-        <img src="IMG-20260427-WA0001.jpg" alt="একতা একাডেমি">
-        <h1>একতা একাডেমি</h1>
-      </div>
+<div class="logo">
+<img src="IMG-20260427-WA0001.jpg" alt="">
+<h1>একতা একাডেমি</h1>
+</div>
 
-      <div class="menu">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#courses">Courses</a>
-        <a href="#notice">Notice</a>
-        <a href="#login">Student Login</a>
-        <a href="#contact">Contact</a>
-      </div>
+<div class="menu">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#courses">Courses</a>
+<a href="login.html">Log In</a>
+<a href="#contact">Contact</a>
+</div>
 
-    </nav>
-    
-      <!-- TOP MARQUEE -->
+</nav>
 
-  <div class="top-marquee">
+<div class="top-marquee">
+<marquee behavior="scroll" direction="left">
+একতা একাডেমিতে নতুন ব্যাচে ভর্তি চলছে • SSC ও HSC বিশেষ কোচিং শুরু • সীমিত আসনে ভর্তি চলছে
+</marquee>
+</div>
 
-    <marquee behavior="scroll" direction="left" scrollamount="6">
-      একতা একাডেমিতে নতুন ব্যাচে ভর্তি চলছে • SSC ও HSC বিশেষ কোচিং শুরু • মাসিক পরীক্ষার রুটিন প্রকাশ করা হয়েছে • সীমিত আসনে ভর্তি চলছে এখনই যোগাযোগ করুন
-    </marquee>
+</header>
 
-  </div>
+<section class="hero" id="home">
 
-  </header>
+<h2>স্বপ্ন পূরণের সেরা শিক্ষা প্রতিষ্ঠান</h2>
 
-  <!-- HERO -->
+<p>
+একতা একাডেমি হলো আধুনিক ও মানসম্মত শিক্ষা প্রদানের একটি বিশ্বস্ত প্রতিষ্ঠান।
+</p>
 
-  <section class="hero" id="home">
+<a href="#courses" class="btn">কোর্স দেখুন</a>
 
-    <h2>স্বপ্ন পূরণের সেরা শিক্ষা প্রতিষ্ঠান</h2>
+</section>
 
-    <p>
-      একতা একাডেমি হলো আধুনিক ও মানসম্মত শিক্ষা প্রদানের একটি বিশ্বস্ত প্রতিষ্ঠান।
-      এখানে ক্লাস ৬ থেকে ১২ পর্যন্ত সকল বিষয়ের দক্ষ শিক্ষকদের মাধ্যমে যত্নসহকারে পাঠদান করা হয়।
-    </p>
+<section id="about">
 
-    <a href="#courses" class="btn">কোর্স দেখুন</a>
+<h2 class="title">কেনো একতা একাডেমি সেরা?</h2>
 
-  </section>
+<p class="subtitle">
+অভিজ্ঞ শিক্ষক, নিয়মিত পরীক্ষা ও আধুনিক ক্লাসরুম।
+</p>
 
-  <!-- ABOUT -->
+<div class="features">
 
-  <section id="about">
+<div class="card">
+<h3>অভিজ্ঞ শিক্ষক</h3>
+<p>প্রতিটি বিষয়ের জন্য রয়েছে দক্ষ শিক্ষক।</p>
+</div>
 
-    <h2 class="title">কেনো একতা একাডেমি সেরা?</h2>
+<div class="card">
+<h3>নিয়মিত পরীক্ষা</h3>
+<p>প্রতিমাসে মূল্যায়নের মাধ্যমে অগ্রগতি পর্যবেক্ষণ।</p>
+</div>
 
-    <p class="subtitle">
-      অভিজ্ঞ শিক্ষক, নিয়মিত পরীক্ষা, আধুনিক ক্লাসরুম এবং শিক্ষার্থীদের বিশেষ যত্নের কারণে
-      একতা একাডেমি শিক্ষার্থীদের কাছে একটি নির্ভরযোগ্য নাম।
-    </p>
+<div class="card">
+<h3>আধুনিক পরিবেশ</h3>
+<p>আধুনিক শিক্ষার পরিবেশ শিক্ষার্থীদের মনোযোগ বাড়ায়।</p>
+</div>
 
-    <div class="features">
+</div>
 
-      <div class="card">
-        <h3>অভিজ্ঞ শিক্ষক</h3>
-        <p>প্রতিটি বিষয়ের জন্য রয়েছে দক্ষ ও অভিজ্ঞ শিক্ষক।</p>
-      </div>
+</section>
 
-      <div class="card">
-        <h3>নিয়মিত পরীক্ষা</h3>
-        <p>প্রতিমাসে পরীক্ষা ও মূল্যায়নের মাধ্যমে অগ্রগতি পর্যবেক্ষণ।</p>
-      </div>
+<section id="courses">
 
-      <div class="card">
-        <h3>আধুনিক পরিবেশ</h3>
-        <p>সুন্দর ও আধুনিক শিক্ষার পরিবেশ শিক্ষার্থীদের মনোযোগ বাড়ায়।</p>
-      </div>
+<h2 class="title">Class Section</h2>
 
-    </div>
+<p class="subtitle">
+ক্লাস ৬ থেকে ১২ পর্যন্ত সকল বিভাগের বিষয় পড়ানো হয়।
+</p>
 
-  </section>
+<div class="classes">
 
-  <!-- COURSES -->
+<a href="login.html" class="class-box">
+<h3>Class 6</h3>
+<p>বাংলা, ইংরেজি, গণিত ও বিজ্ঞান।</p>
+</a>
 
-  <section id="courses">
+<a href="login.html" class="class-box">
+<h3>Class 7</h3>
+<p>সকল সাধারণ ও সৃজনশীল বিষয়।</p>
+</a>
 
-    <h2 class="title">Class Section</h2>
+<a href="login.html" class="class-box">
+<h3>Class 8</h3>
+<p>জুনিয়র বৃত্তি ও স্কুল প্রস্তুতি।</p>
+</a>
 
-    <p class="subtitle">
-      ক্লাস ৬ থেকে ১২ পর্যন্ত সকল বিভাগের বিষয় পড়ানো হয়।
-    </p>
+<a href="login.html" class="class-box">
+<h3>Class 9-10</h3>
+<p>SSC পরীক্ষার সম্পূর্ণ প্রস্তুতি।</p>
+</a>
 
-    <div class="classes">
+<a href="login.html" class="class-box">
+<h3>Class 11-12</h3>
+<p>HSC ও ভর্তি পরীক্ষার কোচিং।</p>
+</a>
 
-      <div class="class-box">
-        <h3>Class 6</h3>
-        <p>বাংলা, ইংরেজি, গণিত, বিজ্ঞান সহ সকল বিষয়।</p>
-      </div>
+</div>
 
-      <div class="class-box">
-        <h3>Class 7</h3>
-        <p>সকল সাধারণ ও সৃজনশীল বিষয়ের উন্নত কোচিং।</p>
-      </div>
+</section>
 
-      <div class="class-box">
-        <h3>Class 8</h3>
-        <p>জুনিয়র বৃত্তি ও স্কুল পরীক্ষার প্রস্তুতি।</p>
-      </div>
+<section id="contact">
 
-      <div class="class-box">
-        <h3>Class 9-10</h3>
-        <p>SSC পরীক্ষার সম্পূর্ণ প্রস্তুতি।</p>
-      </div>
+<div class="contact">
 
-      <div class="class-box">
-        <h3>Class 11-12</h3>
-        <p>HSC ও ভর্তি পরীক্ষার উন্নত কোচিং।</p>
-      </div>
+<h2>একতা একাডেমি</h2>
 
-    </div>
+<p>আপনার সন্তানের সুন্দর ভবিষ্যতের বিশ্বস্ত ঠিকানা</p>
 
-  </section>
+<div class="contact-cards">
 
-  <!-- NOTICE -->
+<a href="https://wa.me/8801609063574" class="contact-card">
 
-  <section id="notice">
+<div class="icon">💬</div>
 
-    <h2 class="title">Notice</h2>
+<div class="info">
+<span>WhatsApp</span>
+<h4>01609063574</h4>
+</div>
 
-    <p class="subtitle">
-      গুরুত্বপূর্ণ সকল নোটিশ নিচে দেখুন।
-    </p>
+</a>
 
-    <div class="notice-wrapper">
+<a href="tel:01859608314" class="contact-card">
 
-      <div class="notice-header">
-        📢 একতা একাডেমির সকল নোটিশ
-      </div>
+<div class="icon">📞</div>
 
-      <div class="notice-box">
+<div class="info">
+<span>Direct Contact</span>
+<h4>01859608314</h4>
+</div>
 
-        <div class="notice-item">📌 নতুন ব্যাচে ভর্তি চলছে — সীমিত আসন।</div>
-        <div class="notice-item">📌 ক্লাস ৬-১০ এর নতুন ব্যাচ শুরু ১৫ জুন।</div>
-        <div class="notice-item">📌 SSC বিশেষ মডেল টেস্ট আগামী শুক্রবার।</div>
-        <div class="notice-item">📌 HSC ভর্তি কোচিংয়ের বিশেষ ছাড় চলছে।</div>
-        <div class="notice-item">📌 মাসিক পরীক্ষার রুটিন প্রকাশ করা হয়েছে।</div>
+</a>
 
-      </div>
+</div>
 
-    </div>
+</div>
 
-  </section>
+</section>
 
-  <!-- LOGIN -->
-
-  <section id="login">
-
-    <div class="login-section">
-
-      <h2>🎓 Student Login System</h2>
-
-      <p>
-        শিক্ষার্থীরা তাদের আইডি এবং পাসওয়ার্ড দিয়ে লগইন করতে পারবে।
-      </p>
-
-      <div class="login-box">
-
-        <div class="input-box">
-          <label>Student ID</label>
-          <input type="text" id="studentId" placeholder="Enter Student ID">
-        </div>
-
-        <div class="input-box">
-          <label>Password</label>
-          <input type="password" id="password" placeholder="Enter Password">
-        </div>
-
-        <button class="submit-btn" onclick="loginStudent()">Login</button>
-
-        <div class="student-panel" id="studentPanel">
-          <h3>স্বাগতম শিক্ষার্থী 🎉</h3>
-          <p>আপনি সফলভাবে লগইন করেছেন।</p>
-          <p><strong>Student ID:</strong> <span id="showId"></span></p>
-          <button class="logout-btn" onclick="logoutStudent()">Logout</button>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- CONTACT -->
-
-  <section id="contact">
-
-    <div class="contact">
-
-      <h2>একতা একাডেমি</h2>
-
-      <p class="contact-text">
-        আপনার সন্তানের সুন্দর ভবিষ্যতের বিশ্বস্ত ঠিকানা
-      </p>
-
-      <div class="contact-cards">
-
-        <a href="https://wa.me/8801609063574" class="contact-card">
-
-          <div class="icon">💬</div>
-
-          <div class="info">
-            <span>WhatsApp</span>
-            <h4>01609063574</h4>
-          </div>
-
-        </a>
-
-        <a href="tel:01859608314" class="contact-card">
-
-          <div class="icon">📞</div>
-
-          <div class="info">
-            <span>Direct Contact</span>
-            <h4>01859608314</h4>
-          </div>
-
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-
-  <footer>
-    © 2026 একতা একাডেমি | সকল অধিকার সংরক্ষিত
-  </footer>
-
-
-  <!-- JAVASCRIPT -->
-
-  <script>
-
-    function loginStudent(){
-
-      let studentId=document.getElementById('studentId').value;
-      let password=document.getElementById('password').value;
-
-      if(studentId==='12345' && password==='ekota2026'){
-
-        document.getElementById('studentPanel').style.display='block';
-        document.getElementById('showId').innerText=studentId;
-
-        alert('লগইন সফল হয়েছে ✅');
-
-      }
-
-      else{
-        alert('ভুল Student ID অথবা Password ❌');
-      }
-
-    }
-
-    function logoutStudent(){
-
-      document.getElementById('studentPanel').style.display='none';
-
-      document.getElementById('studentId').value='';
-      document.getElementById('password').value='';
-
-      alert('Logout সফল হয়েছে');
-
-    }
-
-  </script>
+<footer>
+© 2026 একতা একাডেমি | সকল অধিকার সংরক্ষিত
+</footer>
 
 </body>
 </html>
