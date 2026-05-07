@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Notice Panel | একতা একাডেমি</title>
+<title>Notice Board | একতা একাডেমি</title>
 
 <style>
 
@@ -19,172 +19,158 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  padding:25px;
+  padding:20px;
   background:
-  linear-gradient(rgba(5,24,61,0.88),rgba(5,24,61,0.88)),
+  linear-gradient(rgba(4,18,48,0.88),rgba(4,18,48,0.88)),
   url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200&auto=format&fit=crop') center/cover;
 }
 
 /* ===== MAIN BOX ===== */
 
-.container{
+.notice-container{
   width:100%;
-  max-width:760px;
-  background:white;
-  border-radius:30px;
+  max-width:900px;
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,0.15);
+  border-radius:35px;
   overflow:hidden;
-  box-shadow:0 20px 45px rgba(0,0,0,0.25);
-  animation:fade 0.7s ease;
+  box-shadow:0 20px 50px rgba(0,0,0,0.35);
+  animation:fade 0.8s ease;
 }
 
-/* ===== TOP ===== */
+/* ===== HEADER ===== */
 
-.top{
-  padding:35px;
+.notice-header{
+  padding:45px 30px;
+  text-align:center;
   background:linear-gradient(135deg,#071f4e,#0e3b8c,#1d4ed8);
   color:white;
-  text-align:center;
+  position:relative;
 }
 
-.top h1{
-  font-size:42px;
-  margin-bottom:12px;
+.notice-header::after{
+  content:'';
+  position:absolute;
+  width:180px;
+  height:180px;
+  background:rgba(255,255,255,0.08);
+  border-radius:50%;
+  top:-70px;
+  right:-60px;
 }
 
-.top p{
+.notice-header h1{
+  font-size:46px;
+  margin-bottom:15px;
+  position:relative;
+  z-index:2;
+}
+
+.notice-header p{
+  font-size:18px;
   line-height:1.8;
   opacity:0.95;
+  position:relative;
+  z-index:2;
 }
 
-/* ===== CONTENT ===== */
+/* ===== NOTICE BODY ===== */
 
-.content{
-  padding:35px;
+.notice-body{
+  padding:45px 35px;
 }
 
-label{
-  display:block;
-  margin-bottom:14px;
-  font-size:22px;
-  font-weight:700;
-  color:#071f4e;
-}
+/* ===== TITLE ===== */
 
-textarea{
-  width:100%;
-  height:190px;
-  border:none;
-  outline:none;
-  resize:none;
-  border-radius:22px;
-  background:#eef3ff;
-  padding:22px;
-  font-size:18px;
-  line-height:1.9;
-  box-shadow:inset 0 0 10px rgba(0,0,0,0.05);
-}
-
-/* ===== BUTTONS ===== */
-
-.buttons{
+.notice-title{
   display:flex;
-  gap:18px;
-  margin-top:28px;
-  flex-wrap:wrap;
+  align-items:center;
+  gap:14px;
+  margin-bottom:28px;
 }
 
-button{
-  flex:1;
-  padding:17px;
-  border:none;
-  border-radius:18px;
-  font-size:18px;
-  font-weight:700;
-  cursor:pointer;
-  transition:0.3s;
+.notice-title span{
+  font-size:34px;
 }
 
-.save-btn{
-  background:linear-gradient(135deg,#071f4e,#0e3b8c);
+.notice-title h2{
+  font-size:34px;
   color:white;
 }
 
-.save-btn:hover{
-  transform:translateY(-4px);
+/* ===== NOTICE CARD ===== */
+
+.notice-card{
+  background:white;
+  border-radius:28px;
+  padding:35px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.18);
+  position:relative;
+  overflow:hidden;
 }
 
-.reset-btn{
-  background:#ffd86b;
+.notice-card::before{
+  content:'';
+  position:absolute;
+  width:140px;
+  height:140px;
+  background:rgba(29,78,216,0.08);
+  border-radius:50%;
+  top:-50px;
+  left:-50px;
+}
+
+.notice-text{
+  position:relative;
+  z-index:2;
   color:#071f4e;
-}
-
-.reset-btn:hover{
-  transform:translateY(-4px);
-}
-
-/* ===== SUCCESS ===== */
-
-.success{
-  margin-top:20px;
-  padding:14px;
-  border-radius:14px;
-  background:#e7ffe9;
-  color:green;
-  font-weight:700;
-  display:none;
+  font-size:22px;
+  line-height:2;
+  font-weight:600;
   text-align:center;
-}
-
-/* ===== PREVIEW ===== */
-
-.preview{
-  margin-top:35px;
-}
-
-.preview h2{
-  color:#071f4e;
-  margin-bottom:18px;
-  font-size:28px;
 }
 
 /* ===== MARQUEE ===== */
 
 .marquee-box{
+  margin-top:35px;
   border-radius:999px;
   overflow:hidden;
-  background:linear-gradient(135deg,#071f4e,#0e3b8c,#1d4ed8);
   border:3px solid #ffd86b;
-  box-shadow:0 10px 25px rgba(0,0,0,0.12);
+  background:linear-gradient(135deg,#071f4e,#0e3b8c,#1d4ed8);
+  box-shadow:0 10px 25px rgba(0,0,0,0.18);
 }
 
 .marquee-box marquee{
-  padding:14px;
+  padding:18px;
   color:white;
+  font-size:20px;
   font-weight:700;
-  font-size:18px;
+  letter-spacing:0.4px;
 }
 
-/* ===== BOTTOM ===== */
+/* ===== FOOTER ===== */
 
-.bottom{
+.notice-footer{
   margin-top:35px;
-  display:flex;
-  justify-content:center;
+  text-align:center;
 }
 
-.back-btn{
+.notice-footer a{
   text-decoration:none;
-  background:#071f4e;
-  color:white;
+  display:inline-block;
+  background:#ffd86b;
+  color:#071f4e;
   padding:15px 32px;
   border-radius:40px;
   font-weight:700;
   transition:0.3s;
 }
 
-.back-btn:hover{
+.notice-footer a:hover{
   transform:translateY(-4px);
-  background:#0e3b8c;
+  background:white;
 }
 
 /* ===== ANIMATION ===== */
@@ -193,7 +179,7 @@ button{
 
   from{
     opacity:0;
-    transform:translateY(30px);
+    transform:translateY(40px);
   }
 
   to{
@@ -207,25 +193,34 @@ button{
 
 @media(max-width:768px){
 
-.top h1{
-  font-size:30px;
+.notice-header{
+  padding:35px 20px;
 }
 
-label{
-  font-size:20px;
+.notice-header h1{
+  font-size:32px;
 }
 
-textarea{
-  height:170px;
+.notice-header p{
   font-size:16px;
 }
 
-button{
-  width:100%;
+.notice-body{
+  padding:28px 20px;
 }
 
-.preview h2{
-  font-size:24px;
+.notice-title h2{
+  font-size:26px;
+}
+
+.notice-text{
+  font-size:18px;
+  line-height:1.8;
+}
+
+.marquee-box marquee{
+  font-size:17px;
+  padding:15px;
 }
 
 }
@@ -235,53 +230,47 @@ button{
 
 <body>
 
-<div class="container">
+<div class="notice-container">
 
-<!-- ===== TOP ===== -->
+<!-- ===== HEADER ===== -->
 
-<div class="top">
+<div class="notice-header">
 
-<h1>Notice Panel</h1>
+<h1>📢 Notice Board</h1>
 
 <p>
-এখান থেকে নতুন Notice লিখলেই তা আপনার Website এর marquee তে দেখাবে।
+একতা একাডেমির সর্বশেষ গুরুত্বপূর্ণ Notice ও আপডেট এখানে দেখানো হচ্ছে
 </p>
 
 </div>
 
-<!-- ===== CONTENT ===== -->
+<!-- ===== BODY ===== -->
 
-<div class="content">
+<div class="notice-body">
 
-<label>নতুন Notice লিখুন</label>
+<div class="notice-title">
 
-<textarea id="noticeInput"></textarea>
+<span>✨</span>
 
-<div class="buttons">
-
-<button class="save-btn" onclick="saveNotice()">
-💾 Save Notice
-</button>
-
-<button class="reset-btn" onclick="resetNotice()">
-♻ Reset Notice
-</button>
+<h2>আজকের Notice</h2>
 
 </div>
 
-<div class="success" id="successMsg">
-✅ Notice Successfully Updated
+<div class="notice-card">
+
+<div class="notice-text" id="noticeText">
+
+একতা একাডেমিতে নতুন ব্যাচে ভর্তি চলছে • SSC ও HSC বিশেষ কোচিং শুরু • সীমিত আসনে ভর্তি চলছে
+
 </div>
 
-<!-- ===== PREVIEW ===== -->
+</div>
 
-<div class="preview">
-
-<h2>Live Preview</h2>
+<!-- ===== MARQUEE ===== -->
 
 <div class="marquee-box">
 
-<marquee behavior="scroll" direction="left" id="previewMarquee">
+<marquee behavior="scroll" direction="left" id="noticeMarquee">
 
 একতা একাডেমিতে নতুন ব্যাচে ভর্তি চলছে • SSC ও HSC বিশেষ কোচিং শুরু • সীমিত আসনে ভর্তি চলছে
 
@@ -289,14 +278,12 @@ button{
 
 </div>
 
-</div>
+<!-- ===== FOOTER ===== -->
 
-<!-- ===== BOTTOM ===== -->
+<div class="notice-footer">
 
-<div class="bottom">
-
-<a href="index.html" class="back-btn">
-← Back To Website
+<a href="index.html">
+🏠 Back To Website
 </a>
 
 </div>
@@ -312,83 +299,27 @@ button{
 const defaultNotice =
 "একতা একাডেমিতে নতুন ব্যাচে ভর্তি চলছে • SSC ও HSC বিশেষ কোচিং শুরু • সীমিত আসনে ভর্তি চলছে";
 
-/* ===== ELEMENTS ===== */
-
-const noticeInput = document.getElementById('noticeInput');
-const previewMarquee = document.getElementById('previewMarquee');
-const successMsg = document.getElementById('successMsg');
-
-/* ===== LOAD SAVED NOTICE ===== */
+/* ===== GET SAVED NOTICE ===== */
 
 const savedNotice = localStorage.getItem('ekota_notice');
 
+/* ===== ELEMENTS ===== */
+
+const noticeText = document.getElementById('noticeText');
+const noticeMarquee = document.getElementById('noticeMarquee');
+
+/* ===== SHOW NOTICE ===== */
+
 if(savedNotice){
 
-  noticeInput.value = savedNotice;
-  previewMarquee.innerText = savedNotice;
+  noticeText.innerText = savedNotice;
+  noticeMarquee.innerText = savedNotice;
 
 }
 else{
 
-  noticeInput.value = defaultNotice;
-  previewMarquee.innerText = defaultNotice;
-
-}
-
-/* ===== LIVE PREVIEW ===== */
-
-noticeInput.addEventListener('input', function(){
-
-  previewMarquee.innerText = this.value;
-
-});
-
-/* ===== SAVE NOTICE ===== */
-
-function saveNotice(){
-
-  const noticeText = noticeInput.value.trim();
-
-  if(noticeText === ''){
-
-    alert('দয়া করে একটি Notice লিখুন');
-    return;
-
-  }
-
-  localStorage.setItem('ekota_notice', noticeText);
-
-  successMsg.style.display = 'block';
-
-  setTimeout(() => {
-
-    successMsg.style.display = 'none';
-
-  }, 2500);
-
-}
-
-/* ===== RESET NOTICE ===== */
-
-function resetNotice(){
-
-  noticeInput.value = defaultNotice;
-
-  previewMarquee.innerText = defaultNotice;
-
-  localStorage.setItem('ekota_notice', defaultNotice);
-
-  successMsg.style.display = 'block';
-
-  successMsg.innerHTML = '♻ Notice Reset Successfully';
-
-  setTimeout(() => {
-
-    successMsg.style.display = 'none';
-
-    successMsg.innerHTML = '✅ Notice Successfully Updated';
-
-  }, 2500);
+  noticeText.innerText = defaultNotice;
+  noticeMarquee.innerText = defaultNotice;
 
 }
 
