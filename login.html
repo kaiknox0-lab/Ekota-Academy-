@@ -325,6 +325,15 @@ body{
   font-weight:700;
 }
 
+/* MESSAGE */
+
+.message{
+  margin-top:15px;
+  text-align:center;
+  font-weight:700;
+  color:#fff;
+}
+
 /* ===== ANIMATIONS ===== */
 
 @keyframes roadMove{
@@ -480,17 +489,19 @@ body{
 
 <h2>Student Login</h2>
 
+<form id="loginForm">
+
 <div class="input-box">
 <label>মোবাইল নাম্বার</label>
-<input type="text" placeholder="01XXXXXXXXX">
+<input type="text" id="mobile" placeholder="01XXXXXXXXX">
 </div>
 
 <div class="input-box">
 
 <label>Class</label>
 
-<select>
-<option>Select Class</option>
+<select id="studentClass">
+<option value="">Select Class</option>
 <option>Class 6</option>
 <option>Class 7</option>
 <option>Class 8</option>
@@ -502,10 +513,14 @@ body{
 
 <div class="input-box">
 <label>Password</label>
-<input type="password" placeholder="Enter Password">
+<input type="password" id="password" placeholder="Enter Password">
 </div>
 
-<button class="login-btn">Login</button>
+<button type="submit" class="login-btn">Login</button>
+
+<div class="message" id="message"></div>
+
+</form>
 
 <!-- FORGOT + SIGNUP -->
 
@@ -526,6 +541,57 @@ body{
 </div>
 
 </div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+const loginForm = document.getElementById('loginForm');
+const message = document.getElementById('message');
+
+loginForm.addEventListener('submit', function(e){
+
+  e.preventDefault();
+
+  const mobile = document.getElementById('mobile').value.trim();
+  const studentClass = document.getElementById('studentClass').value;
+  const password = document.getElementById('password').value.trim();
+
+  // Mobile Validation
+  const mobilePattern = /^01[0-9]{9}$/;
+
+  if(!mobilePattern.test(mobile)){
+    message.innerHTML = 'সঠিক মোবাইল নাম্বার দিন';
+    message.style.color = '#ffb3b3';
+    return;
+  }
+
+  // Class Validation
+  if(studentClass === ''){
+    message.innerHTML = 'একটি ক্লাস নির্বাচন করুন';
+    message.style.color = '#ffb3b3';
+    return;
+  }
+
+  // Password Validation
+  if(password.length < 6){
+    message.innerHTML = 'পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে';
+    message.style.color = '#ffb3b3';
+    return;
+  }
+
+  // Success Message
+  message.innerHTML = 'Login Successful ✅';
+  message.style.color = '#b8ffb8';
+
+  // Example Redirect
+  setTimeout(() => {
+    window.location.href = 'dashboard.html';
+  }, 1500);
+
+});
+
+</script>
 
 </body>
 </html>
