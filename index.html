@@ -1,6 +1,6 @@
-<!-- =========================
-FILE: index.html
-========================= -->
+<!-- =====================================================
+index.html
+===================================================== -->
 
 <!DOCTYPE html>
 <html lang="bn">
@@ -21,15 +21,17 @@ FILE: index.html
 
 body{
   background:linear-gradient(135deg,#eef3ff,#f7faff,#edf3ff);
+  color:#222;
   overflow-x:hidden;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 
 header{
   background:linear-gradient(135deg,#071f4e,#0e3b8c);
   padding:22px 8%;
   color:white;
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
 }
 
 nav{
@@ -38,6 +40,7 @@ nav{
   justify-content:center;
   align-items:center;
   gap:22px;
+  text-align:center;
 }
 
 .logo{
@@ -65,6 +68,7 @@ nav{
 .menu{
   display:flex;
   justify-content:center;
+  align-items:center;
   gap:16px;
   flex-wrap:wrap;
 }
@@ -84,7 +88,7 @@ nav{
   color:#071f4e;
 }
 
-/* MARQUEE */
+/* ===== MARQUEE ===== */
 
 .top-marquee{
   width:92%;
@@ -102,7 +106,7 @@ nav{
   font-weight:700;
 }
 
-/* HERO */
+/* ===== HERO ===== */
 
 .hero{
   padding:100px 8%;
@@ -136,7 +140,7 @@ nav{
   font-weight:700;
 }
 
-/* SECTION */
+/* ===== SECTION ===== */
 
 section{
   padding:80px 8%;
@@ -157,7 +161,7 @@ section{
   color:#555;
 }
 
-/* FEATURES */
+/* ===== FEATURES ===== */
 
 .features{
   display:grid;
@@ -177,7 +181,63 @@ section{
   color:#071f4e;
 }
 
-/* CLASSES */
+/* ===== TEACHER LINK ===== */
+
+.teacher-link-card{
+  width:100%;
+  max-width:420px;
+  margin:auto;
+  background:white;
+  padding:35px 30px;
+  border-radius:28px;
+  text-align:center;
+  text-decoration:none;
+  box-shadow:0 15px 35px rgba(0,0,0,0.08);
+  transition:0.4s;
+  position:relative;
+  overflow:hidden;
+}
+
+.teacher-link-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:8px;
+  background:linear-gradient(90deg,#071f4e,#0e3b8c,#1d4ed8);
+}
+
+.teacher-link-card:hover{
+  transform:translateY(-10px);
+}
+
+.teacher-icon{
+  width:95px;
+  height:95px;
+  margin:auto;
+  border-radius:50%;
+  background:linear-gradient(135deg,#071f4e,#0e3b8c);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:42px;
+  color:white;
+  margin-bottom:22px;
+}
+
+.teacher-link-card h3{
+  color:#071f4e;
+  font-size:30px;
+  margin-bottom:15px;
+}
+
+.teacher-link-card p{
+  color:#555;
+  line-height:1.8;
+}
+
+/* ===== CLASS SECTION ===== */
 
 .classes{
   display:grid;
@@ -204,7 +264,7 @@ section{
   font-size:28px;
 }
 
-/* CONTACT */
+/* ===== CONTACT ===== */
 
 .contact{
   background:linear-gradient(135deg,#071f4e,#0e3b8c);
@@ -249,7 +309,7 @@ section{
   font-size:24px;
 }
 
-/* FOOTER */
+/* ===== FOOTER ===== */
 
 footer{
   margin-top:40px;
@@ -258,6 +318,8 @@ footer{
   text-align:center;
   padding:22px;
 }
+
+/* ===== MOBILE ===== */
 
 @media(max-width:768px){
 
@@ -273,12 +335,18 @@ footer{
   font-size:32px;
 }
 
+.teacher-link-card h3{
+  font-size:24px;
+}
+
 }
 
 </style>
 </head>
 
 <body>
+
+<!-- ===== HEADER ===== -->
 
 <header>
 
@@ -292,6 +360,7 @@ footer{
 <div class="menu">
 <a href="#home">Home</a>
 <a href="#about">About</a>
+<a href="#teachers">Teachers</a>
 <a href="#courses">Courses</a>
 <a href="login.html">Log In</a>
 <a href="#contact">Contact</a>
@@ -300,12 +369,18 @@ footer{
 </nav>
 
 <div class="top-marquee">
+
 <marquee behavior="scroll" direction="left">
+
 একতা একাডেমিতে নতুন ব্যাচে ভর্তি চলছে • SSC ও HSC বিশেষ কোচিং শুরু • সীমিত আসনে ভর্তি চলছে
+
 </marquee>
+
 </div>
 
 </header>
+
+<!-- ===== HERO ===== -->
 
 <section class="hero" id="home">
 
@@ -313,40 +388,76 @@ footer{
 
 <p>
 একতা একাডেমি হলো আধুনিক ও মানসম্মত শিক্ষা প্রদানের একটি বিশ্বস্ত প্রতিষ্ঠান।
+এখানে ক্লাস ৬ থেকে ১২ পর্যন্ত সকল বিষয়ের দক্ষ শিক্ষকদের মাধ্যমে যত্নসহকারে পাঠদান করা হয়।
 </p>
 
 <a href="#courses" class="btn">কোর্স দেখুন</a>
 
 </section>
 
+<!-- ===== ABOUT ===== -->
+
 <section id="about">
 
 <h2 class="title">কেনো একতা একাডেমি সেরা?</h2>
 
 <p class="subtitle">
-অভিজ্ঞ শিক্ষক, নিয়মিত পরীক্ষা ও আধুনিক ক্লাসরুম।
+অভিজ্ঞ শিক্ষক, নিয়মিত পরীক্ষা, আধুনিক ক্লাসরুম এবং শিক্ষার্থীদের বিশেষ যত্নের কারণে
+একতা একাডেমি শিক্ষার্থীদের কাছে একটি নির্ভরযোগ্য নাম।
 </p>
 
 <div class="features">
 
 <div class="card">
 <h3>অভিজ্ঞ শিক্ষক</h3>
-<p>প্রতিটি বিষয়ের জন্য রয়েছে দক্ষ শিক্ষক।</p>
+<p>প্রতিটি বিষয়ের জন্য রয়েছে দক্ষ ও অভিজ্ঞ শিক্ষক।</p>
 </div>
 
 <div class="card">
 <h3>নিয়মিত পরীক্ষা</h3>
-<p>প্রতিমাসে মূল্যায়নের মাধ্যমে অগ্রগতি পর্যবেক্ষণ।</p>
+<p>প্রতিমাসে পরীক্ষা ও মূল্যায়নের মাধ্যমে অগ্রগতি পর্যবেক্ষণ।</p>
 </div>
 
 <div class="card">
 <h3>আধুনিক পরিবেশ</h3>
-<p>আধুনিক শিক্ষার পরিবেশ শিক্ষার্থীদের মনোযোগ বাড়ায়।</p>
+<p>সুন্দর ও আধুনিক শিক্ষার পরিবেশ শিক্ষার্থীদের মনোযোগ বাড়ায়।</p>
 </div>
 
 </div>
 
 </section>
+
+<!-- ===== TEACHERS ===== -->
+
+<section id="teachers">
+
+<h2 class="title">অভিজ্ঞ শিক্ষকসমূহ</h2>
+
+<p class="subtitle">
+একতা একাডেমির দক্ষ ও অভিজ্ঞ শিক্ষকবৃন্দ শিক্ষার্থীদের সঠিকভাবে গাইড করেন।
+</p>
+
+<div class="features">
+
+<a href="teachers.html" class="teacher-link-card">
+
+<div class="teacher-icon">
+👨‍🏫
+</div>
+
+<h3>শিক্ষকদের তালিকা দেখুন</h3>
+
+<p>
+সকল শিক্ষকের নাম, বিষয়, অভিজ্ঞতা ও ছবি দেখতে এখানে ক্লিক করুন।
+</p>
+
+</a>
+
+</div>
+
+</section>
+
+<!-- ===== COURSES ===== -->
 
 <section id="courses">
 
@@ -387,13 +498,17 @@ footer{
 
 </section>
 
+<!-- ===== CONTACT ===== -->
+
 <section id="contact">
 
 <div class="contact">
 
 <h2>একতা একাডেমি</h2>
 
-<p>আপনার সন্তানের সুন্দর ভবিষ্যতের বিশ্বস্ত ঠিকানা</p>
+<p>
+আপনার সন্তানের সুন্দর ভবিষ্যতের বিশ্বস্ত ঠিকানা
+</p>
 
 <div class="contact-cards">
 
@@ -424,6 +539,8 @@ footer{
 </div>
 
 </section>
+
+<!-- ===== FOOTER ===== -->
 
 <footer>
 © 2026 একতা একাডেমি | সকল অধিকার সংরক্ষিত
