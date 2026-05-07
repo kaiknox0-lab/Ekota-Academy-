@@ -449,14 +449,17 @@ footer{
 <a href="#teachers">Teachers</a>
 <a href="#courses">Courses</a>
 <a href="login.html">Log In</a>
+<a href="marquee-admin.html">Notice Panel</a>
 <a href="#contact">Contact</a>
 </div>
 
 </nav>
 
+<!-- ===== DYNAMIC MARQUEE ===== -->
+
 <div class="top-marquee">
 
-<marquee behavior="scroll" direction="left">
+<marquee behavior="scroll" direction="left" id="mainMarquee">
 
 একতা একাডেমিতে নতুন ব্যাচে ভর্তি চলছে • SSC ও HSC বিশেষ কোচিং শুরু • সীমিত আসনে ভর্তি চলছে
 
@@ -699,6 +702,16 @@ menuLinks.forEach(link => {
   });
 
 });
+
+/* ===== LOAD MARQUEE TEXT ===== */
+
+const savedNotice = localStorage.getItem('ekota_notice');
+
+if(savedNotice){
+
+  document.getElementById('mainMarquee').innerText = savedNotice;
+
+}
 
 </script>
 
