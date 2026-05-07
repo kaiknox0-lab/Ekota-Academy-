@@ -127,6 +127,7 @@ nav{
   padding:12px;
   color:white;
   font-weight:700;
+  font-size:16px;
 }
 
 /* ===== HERO ===== */
@@ -459,9 +460,13 @@ footer{
 
 <div class="top-marquee">
 
-<marquee behavior="scroll" direction="left" id="mainMarquee">
+<marquee behavior="scroll" direction="left" scrollamount="6" id="mainMarquee">
 
-লোড হচ্ছে...
+📢 আগামী শুক্রবার সাপ্তাহিক পরীক্ষা অনুষ্ঠিত হবে • 
+📢 নতুন ব্যাচে ভর্তি কার্যক্রম শুরু হয়েছে • 
+📢 ক্লাস ৯-১০ শিক্ষার্থীদের বিশেষ গণিত ক্লাস আগামী সোমবার অনুষ্ঠিত হবে • 
+📢 সকল শিক্ষার্থীকে নির্ধারিত সময়ে ক্লাসে উপস্থিত থাকার নির্দেশ দেওয়া হলো • 
+📢 Eid Vacation আগামী ৫ জুন থেকে শুরু হবে
 
 </marquee>
 
@@ -700,55 +705,6 @@ menuLinks.forEach(link => {
     this.style.color = '#071f4e';
 
   });
-
-});
-
-/* ===== LOAD NOTICE FROM notice.html ===== */
-
-fetch('notice.html')
-
-.then(response => response.text())
-
-.then(data => {
-
-  const parser = new DOMParser();
-
-  const doc = parser.parseFromString(data, 'text/html');
-
-  const noticeTexts = doc.querySelectorAll('.notice-text');
-
-  let marqueeText = '';
-
-  noticeTexts.forEach((item,index)=>{
-
-    marqueeText += item.innerText;
-
-    if(index !== noticeTexts.length - 1){
-
-      marqueeText += ' • ';
-
-    }
-
-  });
-
-  if(marqueeText.trim() !== ''){
-
-    document.getElementById('mainMarquee').innerText = marqueeText;
-
-  }
-  else{
-
-    document.getElementById('mainMarquee').innerText =
-    'এখনো কোনো নোটিশ যোগ করা হয়নি';
-
-  }
-
-})
-
-.catch(() => {
-
-  document.getElementById('mainMarquee').innerText =
-  'নোটিশ লোড করা যায়নি';
 
 });
 
