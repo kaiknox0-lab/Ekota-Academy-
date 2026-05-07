@@ -1,0 +1,152 @@
+<!-- =========================
+FILE: login.html
+========================= -->
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Login</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#071f4e,#0e3b8c,#123f96);
+  padding:20px;
+}
+
+.login-box{
+  width:100%;
+  max-width:450px;
+  background:white;
+  border-radius:25px;
+  padding:40px;
+  box-shadow:0 15px 35px rgba(0,0,0,0.2);
+}
+
+.login-box h2{
+  text-align:center;
+  color:#071f4e;
+  margin-bottom:30px;
+  font-size:38px;
+}
+
+.input-box{
+  margin-bottom:20px;
+}
+
+.input-box label{
+  display:block;
+  margin-bottom:8px;
+  font-weight:700;
+  color:#071f4e;
+}
+
+.input-box input,
+.input-box select{
+  width:100%;
+  padding:15px;
+  border:1px solid #ccc;
+  border-radius:12px;
+  outline:none;
+  font-size:16px;
+}
+
+.login-btn{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:14px;
+  background:#071f4e;
+  color:white;
+  font-size:18px;
+  font-weight:700;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+.login-btn:hover{
+  background:#0e3b8c;
+}
+
+.forgot{
+  text-align:right;
+  margin-top:15px;
+}
+
+.forgot a{
+  text-decoration:none;
+  color:#0e3b8c;
+  font-weight:700;
+}
+
+.back{
+  text-align:center;
+  margin-top:25px;
+}
+
+.back a{
+  text-decoration:none;
+  color:#071f4e;
+  font-weight:700;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="login-box">
+
+<h2>Student Login</h2>
+
+<div class="input-box">
+<label>মোবাইল নাম্বার</label>
+<input type="text" placeholder="01XXXXXXXXX">
+</div>
+
+<div class="input-box">
+<label>Class</label>
+
+<select>
+<option>Select Class</option>
+<option>Class 6</option>
+<option>Class 7</option>
+<option>Class 8</option>
+<option>Class 9-10</option>
+<option>Class 11-12</option>
+</select>
+
+</div>
+
+<div class="input-box">
+<label>Password</label>
+<input type="password" placeholder="Enter Password">
+</div>
+
+<button class="login-btn">Login</button>
+
+<div class="forgot">
+<a href="forgot-password.html">Forgot Password?</a>
+</div>
+
+<div class="back">
+<a href="index.html">← Back To Home</a>
+</div>
+
+</div>
+
+</body>
+</html>
