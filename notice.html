@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>সমস্ত নোটিশ | একতা একাডেমি</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#eef3ff,#f7faff,#edf3ff);
+  min-height:100vh;
+  color:#222;
+}
+
+/* ===== HEADER ===== */
+
+header{
+  background:linear-gradient(135deg,#071f4e,#0e3b8c);
+  color:white;
+  padding:25px 8%;
+  text-align:center;
+  box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+
+header h1{
+  font-size:42px;
+  margin-bottom:10px;
+}
+
+header p{
+  opacity:0.9;
+  font-size:17px;
+}
+
+/* ===== NOTICE SECTION ===== */
+
+.notice-section{
+  width:92%;
+  max-width:1100px;
+  margin:50px auto;
+}
+
+.notice-box{
+  background:white;
+  border-radius:25px;
+  padding:35px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.08);
+}
+
+.notice-title{
+  text-align:center;
+  font-size:36px;
+  color:#071f4e;
+  margin-bottom:30px;
+}
+
+/* ===== NOTICE LIST ===== */
+
+.notice-list{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.notice-item{
+  background:#f4f7ff;
+  border-left:7px solid #0e3b8c;
+  padding:20px 22px;
+  border-radius:18px;
+  display:flex;
+  align-items:flex-start;
+  gap:18px;
+  transition:0.3s;
+}
+
+.notice-item:hover{
+  transform:translateX(6px);
+  background:#edf3ff;
+}
+
+.notice-number{
+  min-width:45px;
+  height:45px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#071f4e,#1d4ed8);
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:700;
+  font-size:18px;
+}
+
+.notice-text{
+  font-size:18px;
+  line-height:1.8;
+  color:#333;
+}
+
+/* ===== BACK BUTTON ===== */
+
+.back-btn{
+  display:inline-block;
+  margin-top:35px;
+  padding:14px 30px;
+  border-radius:40px;
+  background:#071f4e;
+  color:white;
+  text-decoration:none;
+  font-weight:700;
+  transition:0.3s;
+}
+
+.back-btn:hover{
+  transform:translateY(-4px);
+}
+
+/* ===== EMPTY NOTICE ===== */
+
+.empty{
+  text-align:center;
+  padding:40px;
+  color:#666;
+  font-size:20px;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+  background:#03112d;
+  color:#ddd;
+  text-align:center;
+  padding:20px;
+  margin-top:50px;
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:768px){
+
+header h1{
+  font-size:30px;
+}
+
+.notice-title{
+  font-size:28px;
+}
+
+.notice-text{
+  font-size:16px;
+}
+
+.notice-item{
+  padding:18px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+
+<header>
+
+<h1>একতা একাডেমি</h1>
+
+<p>
+সমস্ত গুরুত্বপূর্ণ নোটিশ এখানে দেখুন
+</p>
+
+</header>
+
+<!-- ===== NOTICE SECTION ===== -->
+
+<section class="notice-section">
+
+<div class="notice-box">
+
+<h2 class="notice-title">
+📢 সকল নোটিশ
+</h2>
+
+<div class="notice-list" id="noticeList">
+
+<!-- JS দিয়ে Notice আসবে -->
+
+</div>
+
+<div style="text-align:center;">
+<a href="index.html" class="back-btn">
+← হোম পেজে ফিরে যান
+</a>
+</div>
+
+</div>
+
+</section>
+
+<!-- ===== FOOTER ===== -->
+
+<footer>
+© 2026 একতা একাডেমি | সকল অধিকার সংরক্ষিত
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+
+<script>
+
+/* ===== GET NOTICE ===== */
+
+const noticeList = document.getElementById('noticeList');
+
+const savedNotice = localStorage.getItem('ekota_notice');
+
+if(savedNotice){
+
+  // notice গুলো • দিয়ে ভাগ হবে
+
+  const notices = savedNotice.split('•');
+
+  notices.forEach((notice,index)=>{
+
+    if(notice.trim() !== ''){
+
+      const item = document.createElement('div');
+      item.className = 'notice-item';
+
+      item.innerHTML = `
+      
+      <div class="notice-number">
+      ${index + 1}
+      </div>
+
+      <div class="notice-text">
+      ${notice.trim()}
+      </div>
+
+      `;
+
+      noticeList.appendChild(item);
+
+    }
+
+  });
+
+}
+else{
+
+  noticeList.innerHTML = `
+  
+  <div class="empty">
+  এখনো কোনো নোটিশ যোগ করা হয়নি
+  </div>
+
+  `;
+
+}
+
+</script>
+
+</body>
+</html>
