@@ -1,7 +1,3 @@
-<!-- =========================
-FILE: teachers.html
-========================= -->
-
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -16,12 +12,41 @@ FILE: teachers.html
   padding:0;
   box-sizing:border-box;
   font-family:'Segoe UI',sans-serif;
+  scroll-behavior:smooth;
 }
 
 body{
   background:linear-gradient(135deg,#eef3ff,#f7faff,#edf3ff);
   min-height:100vh;
   padding:60px 8%;
+  overflow-x:hidden;
+}
+
+/* ===== LOADER ===== */
+
+.loader{
+  position:fixed;
+  inset:0;
+  background:#071f4e;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  transition:0.5s;
+}
+
+.loader.hide{
+  opacity:0;
+  visibility:hidden;
+}
+
+.loader span{
+  width:70px;
+  height:70px;
+  border:7px solid rgba(255,255,255,0.2);
+  border-top:7px solid #ffd86b;
+  border-radius:50%;
+  animation:spin 1s linear infinite;
 }
 
 /* ===== TITLE ===== */
@@ -29,6 +54,7 @@ body{
 .page-title{
   text-align:center;
   margin-bottom:55px;
+  animation:fadeDown 1s ease;
 }
 
 .page-title h1{
@@ -42,6 +68,24 @@ body{
   color:#555;
   font-size:18px;
   line-height:1.8;
+}
+
+/* ===== SEARCH ===== */
+
+.search-box{
+  max-width:500px;
+  margin:0 auto 50px;
+}
+
+.search-box input{
+  width:100%;
+  padding:16px 20px;
+  border:none;
+  border-radius:50px;
+  outline:none;
+  font-size:16px;
+  background:white;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
 /* ===== TEACHERS ===== */
@@ -63,6 +107,7 @@ body{
   transition:0.4s;
   position:relative;
   overflow:hidden;
+  animation:fadeUp 1s ease;
 }
 
 .teacher-card::before{
@@ -114,11 +159,34 @@ body{
   font-weight:800;
 }
 
+.teacher-info h3{
+  color:#1d4ed8;
+  margin-bottom:12px;
+}
+
 .teacher-info p{
   color:#555;
   font-size:17px;
   line-height:1.8;
   font-weight:500;
+}
+
+/* ===== CONTACT BUTTON ===== */
+
+.contact-btn{
+  display:inline-block;
+  margin-top:18px;
+  padding:12px 24px;
+  border-radius:40px;
+  background:linear-gradient(135deg,#071f4e,#0e3b8c);
+  color:white;
+  text-decoration:none;
+  font-weight:700;
+  transition:0.3s;
+}
+
+.contact-btn:hover{
+  transform:translateY(-4px);
 }
 
 /* ===== BACK BUTTON ===== */
@@ -142,6 +210,57 @@ body{
 .back a:hover{
   background:#0e3b8c;
   transform:translateY(-4px);
+}
+
+/* ===== SCROLL BUTTON ===== */
+
+.scroll-top{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  width:50px;
+  height:50px;
+  border:none;
+  border-radius:50%;
+  background:#071f4e;
+  color:white;
+  font-size:22px;
+  cursor:pointer;
+  display:none;
+  z-index:999;
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes spin{
+  from{
+    transform:rotate(0deg);
+  }
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes fadeDown{
+  from{
+    opacity:0;
+    transform:translateY(-30px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 /* ===== MOBILE ===== */
@@ -172,6 +291,12 @@ body{
 
 <body>
 
+<!-- ===== LOADER ===== -->
+
+<div class="loader" id="loader">
+<span></span>
+</div>
+
 <!-- ===== PAGE TITLE ===== -->
 
 <div class="page-title">
@@ -184,9 +309,15 @@ body{
 
 </div>
 
+<!-- ===== SEARCH ===== -->
+
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="শিক্ষকের নাম দিয়ে খুঁজুন...">
+</div>
+
 <!-- ===== TEACHERS ===== -->
 
-<div class="teacher-container">
+<div class="teacher-container" id="teacherContainer">
 
 <!-- TEACHER 1 -->
 
@@ -200,11 +331,15 @@ body{
 <h3>B.Sc.(Mathematics)</h3>
 
 <p>
-বিষয়ঃ গণিত, বিজ্ঞান, রসায়ন,পদার্থ <br>
+বিষয়ঃ গণিত, বিজ্ঞান, রসায়ন, পদার্থ <br>
 অভিজ্ঞতাঃ ৮ বছর
 </p>
+
 <p>মোবাইলঃ <b>01609063574</b></p>
 
+<a href="tel:01609063574" class="contact-btn">
+কল করুন
+</a>
 
 </div>
 
@@ -220,10 +355,16 @@ body{
 
 <h2>সাবিনা ইয়াসমিন</h2>
 
+<h3>M.A. (English)</h3>
+
 <p>
 বিষয়ঃ ইংরেজি <br>
 অভিজ্ঞতাঃ ৮ বছর
 </p>
+
+<a href="#" class="contact-btn">
+বিস্তারিত
+</a>
 
 </div>
 
@@ -238,13 +379,19 @@ body{
 <div class="teacher-info">
 
 <h2>আমিনুল ইসলাম</h2>
+
 <h3>B.Sc.(Mathematics)</h3>
 
 <p>
-বিষয়ঃ গণিত, বিজ্ঞান, রসায়ন,পদার্থ <br>
+বিষয়ঃ গণিত, বিজ্ঞান, রসায়ন, পদার্থ <br>
 অভিজ্ঞতাঃ ১৫ বছর
 </p>
+
 <p>মোবাইলঃ <b>0185608314</b></p>
+
+<a href="tel:0185608314" class="contact-btn">
+কল করুন
+</a>
 
 </div>
 
@@ -260,10 +407,16 @@ body{
 
 <h2>নাসরিন আক্তার</h2>
 
+<h3>M.A. (Bangla)</h3>
+
 <p>
 বিষয়ঃ বাংলা <br>
 অভিজ্ঞতাঃ ৯ বছর
 </p>
+
+<a href="#" class="contact-btn">
+বিস্তারিত
+</a>
 
 </div>
 
@@ -280,6 +433,81 @@ body{
 </a>
 
 </div>
+
+<!-- ===== SCROLL BUTTON ===== -->
+
+<button class="scroll-top" id="scrollTopBtn">
+↑
+</button>
+
+<!-- ===== JAVASCRIPT ===== -->
+
+<script>
+
+/* ===== LOADER ===== */
+
+window.addEventListener('load', function(){
+
+  const loader = document.getElementById('loader');
+
+  setTimeout(() => {
+    loader.classList.add('hide');
+  }, 700);
+
+});
+
+/* ===== SEARCH FUNCTION ===== */
+
+const searchInput = document.getElementById('searchInput');
+const teacherCards = document.querySelectorAll('.teacher-card');
+
+searchInput.addEventListener('keyup', function(){
+
+  const value = this.value.toLowerCase();
+
+  teacherCards.forEach(card => {
+
+    const teacherName =
+      card.querySelector('h2').innerText.toLowerCase();
+
+    if(teacherName.includes(value)){
+      card.style.display = 'block';
+    }
+    else{
+      card.style.display = 'none';
+    }
+
+  });
+
+});
+
+/* ===== SCROLL BUTTON ===== */
+
+const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+window.addEventListener('scroll', function(){
+
+  if(window.scrollY > 300){
+    scrollTopBtn.style.display = 'block';
+  }
+  else{
+    scrollTopBtn.style.display = 'none';
+  }
+
+});
+
+/* ===== SCROLL TO TOP ===== */
+
+scrollTopBtn.addEventListener('click', function(){
+
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
+
+});
+
+</script>
 
 </body>
 </html>
