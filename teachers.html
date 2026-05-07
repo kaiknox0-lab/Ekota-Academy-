@@ -1,0 +1,280 @@
+<!-- =========================
+FILE: teachers.html
+========================= -->
+
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>অভিজ্ঞ শিক্ষকসমূহ</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  background:linear-gradient(135deg,#eef3ff,#f7faff,#edf3ff);
+  min-height:100vh;
+  padding:60px 8%;
+}
+
+/* ===== TITLE ===== */
+
+.page-title{
+  text-align:center;
+  margin-bottom:55px;
+}
+
+.page-title h1{
+  font-size:50px;
+  color:#071f4e;
+  margin-bottom:15px;
+  font-weight:800;
+}
+
+.page-title p{
+  color:#555;
+  font-size:18px;
+  line-height:1.8;
+}
+
+/* ===== TEACHERS ===== */
+
+.teacher-container{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:35px;
+}
+
+/* ===== CARD ===== */
+
+.teacher-card{
+  background:white;
+  border-radius:30px;
+  padding:35px 25px;
+  text-align:center;
+  box-shadow:0 15px 35px rgba(0,0,0,0.08);
+  transition:0.4s;
+  position:relative;
+  overflow:hidden;
+}
+
+.teacher-card::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:120px;
+  background:linear-gradient(135deg,#071f4e,#0e3b8c,#1d4ed8);
+  border-radius:0 0 50% 50%;
+}
+
+.teacher-card:hover{
+  transform:translateY(-12px) scale(1.02);
+}
+
+/* ===== ROUND IMAGE ===== */
+
+.teacher-card img{
+  width:160px;
+  height:160px;
+  object-fit:cover;
+  border-radius:50%;
+  border:8px solid white;
+  position:relative;
+  z-index:2;
+  margin-top:20px;
+  box-shadow:
+  0 10px 25px rgba(0,0,0,0.18),
+  0 0 0 6px rgba(14,59,140,0.1);
+  transition:0.4s;
+}
+
+.teacher-card:hover img{
+  transform:scale(1.08) rotate(3deg);
+}
+
+/* ===== INFO ===== */
+
+.teacher-info{
+  margin-top:25px;
+}
+
+.teacher-info h2{
+  color:#071f4e;
+  margin-bottom:12px;
+  font-size:28px;
+  font-weight:800;
+}
+
+.teacher-info p{
+  color:#555;
+  font-size:17px;
+  line-height:1.8;
+  font-weight:500;
+}
+
+/* ===== BACK BUTTON ===== */
+
+.back{
+  text-align:center;
+  margin-top:60px;
+}
+
+.back a{
+  display:inline-block;
+  padding:15px 32px;
+  background:#071f4e;
+  color:white;
+  text-decoration:none;
+  border-radius:40px;
+  font-weight:700;
+  transition:0.3s;
+}
+
+.back a:hover{
+  background:#0e3b8c;
+  transform:translateY(-4px);
+}
+
+/* ===== MOBILE ===== */
+
+@media(max-width:768px){
+
+.page-title h1{
+  font-size:36px;
+}
+
+.teacher-card{
+  padding:30px 20px;
+}
+
+.teacher-card img{
+  width:140px;
+  height:140px;
+}
+
+.teacher-info h2{
+  font-size:24px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ===== PAGE TITLE ===== -->
+
+<div class="page-title">
+
+<h1>অভিজ্ঞ শিক্ষকসমূহ</h1>
+
+<p>
+একতা একাডেমির দক্ষ ও অভিজ্ঞ শিক্ষকবৃন্দ শিক্ষার্থীদের সঠিকভাবে গাইড করেন।
+</p>
+
+</div>
+
+<!-- ===== TEACHERS ===== -->
+
+<div class="teacher-container">
+
+<!-- TEACHER 1 -->
+
+<div class="teacher-card">
+
+<img src="https://i.ibb.co/6g0K4x7/teacher1.jpg" alt="Teacher">
+
+<div class="teacher-info">
+
+<h2>মোঃ রাকিব হাসান</h2>
+
+<p>
+বিষয়ঃ গণিত <br>
+অভিজ্ঞতাঃ ১০ বছর
+</p>
+
+</div>
+
+</div>
+
+<!-- TEACHER 2 -->
+
+<div class="teacher-card">
+
+<img src="https://i.ibb.co/7jL0K4P/teacher2.jpg" alt="Teacher">
+
+<div class="teacher-info">
+
+<h2>সাবিনা ইয়াসমিন</h2>
+
+<p>
+বিষয়ঃ ইংরেজি <br>
+অভিজ্ঞতাঃ ৮ বছর
+</p>
+
+</div>
+
+</div>
+
+<!-- TEACHER 3 -->
+
+<div class="teacher-card">
+
+<img src="https://i.ibb.co/Jp3xM5X/teacher3.jpg" alt="Teacher">
+
+<div class="teacher-info">
+
+<h2>মোঃ শাহীন আলম</h2>
+
+<p>
+বিষয়ঃ বিজ্ঞান <br>
+অভিজ্ঞতাঃ ১২ বছর
+</p>
+
+</div>
+
+</div>
+
+<!-- TEACHER 4 -->
+
+<div class="teacher-card">
+
+<img src="https://i.ibb.co/5hM4Y8h/teacher4.jpg" alt="Teacher">
+
+<div class="teacher-info">
+
+<h2>নাসরিন আক্তার</h2>
+
+<p>
+বিষয়ঃ বাংলা <br>
+অভিজ্ঞতাঃ ৯ বছর
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===== BACK BUTTON ===== -->
+
+<div class="back">
+
+<a href="index.html">
+← হোম পেজে ফিরে যান
+</a>
+
+</div>
+
+</body>
+</html>
