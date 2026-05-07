@@ -1,7 +1,3 @@
-<!-- =========================
-FILE: signup.html
-========================= -->
-
 <!DOCTYPE html>
 <html lang="bn">
 <head>
@@ -115,6 +111,15 @@ textarea{
   background:#fff;
 }
 
+/* MESSAGE */
+
+.message{
+  margin-top:18px;
+  text-align:center;
+  font-weight:700;
+  color:white;
+}
+
 /* BACK */
 
 .back{
@@ -155,23 +160,23 @@ textarea{
 
 <h2>Coaching Admission Form</h2>
 
-<form>
+<form id="signupForm">
 
 <div class="form-group">
 <label>Student Full Name</label>
-<input type="text" placeholder="Enter Full Name">
+<input type="text" id="studentName" placeholder="Enter Full Name">
 </div>
 
 <div class="row">
 
 <div class="form-group">
 <label>Father's Name</label>
-<input type="text" placeholder="Father Name">
+<input type="text" id="fatherName" placeholder="Father Name">
 </div>
 
 <div class="form-group">
 <label>Mother's Name</label>
-<input type="text" placeholder="Mother Name">
+<input type="text" id="motherName" placeholder="Mother Name">
 </div>
 
 </div>
@@ -180,12 +185,12 @@ textarea{
 
 <div class="form-group">
 <label>Student Mobile Number</label>
-<input type="text" placeholder="01XXXXXXXXX">
+<input type="text" id="studentMobile" placeholder="01XXXXXXXXX">
 </div>
 
 <div class="form-group">
 <label>Guardian Mobile Number</label>
-<input type="text" placeholder="01XXXXXXXXX">
+<input type="text" id="guardianMobile" placeholder="01XXXXXXXXX">
 </div>
 
 </div>
@@ -195,8 +200,8 @@ textarea{
 <div class="form-group">
 <label>Select Class</label>
 
-<select>
-<option>Select Class</option>
+<select id="studentClass">
+<option value="">Select Class</option>
 <option>Class 6</option>
 <option>Class 7</option>
 <option>Class 8</option>
@@ -208,7 +213,7 @@ textarea{
 
 <div class="form-group">
 <label>School / College Name</label>
-<input type="text" placeholder="School or College Name">
+<input type="text" id="schoolName" placeholder="School or College Name">
 </div>
 
 </div>
@@ -217,15 +222,15 @@ textarea{
 
 <div class="form-group">
 <label>Date of Birth</label>
-<input type="date">
+<input type="date" id="dob">
 </div>
 
 <div class="form-group">
 <label>Gender</label>
 
 <div class="gender-box">
-<label><input type="radio" name="gender"> Male</label>
-<label><input type="radio" name="gender"> Female</label>
+<label><input type="radio" name="gender" value="Male"> Male</label>
+<label><input type="radio" name="gender" value="Female"> Female</label>
 </div>
 
 </div>
@@ -234,31 +239,33 @@ textarea{
 
 <div class="form-group">
 <label>Home Address</label>
-<textarea placeholder="Enter Full Address"></textarea>
+<textarea id="address" placeholder="Enter Full Address"></textarea>
 </div>
 
 <div class="row">
 
 <div class="form-group">
 <label>Create Password</label>
-<input type="password" placeholder="Create Password">
+<input type="password" id="password" placeholder="Create Password">
 </div>
 
 <div class="form-group">
 <label>Confirm Password</label>
-<input type="password" placeholder="Confirm Password">
+<input type="password" id="confirmPassword" placeholder="Confirm Password">
 </div>
 
 </div>
 
 <div class="form-group">
 <label>Upload Student Photo</label>
-<input type="file">
+<input type="file" id="photo">
 </div>
 
 <button type="submit" class="signup-btn">
 Submit Admission Form
 </button>
+
+<div class="message" id="message"></div>
 
 </form>
 
@@ -267,6 +274,139 @@ Submit Admission Form
 </div>
 
 </div>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+const signupForm = document.getElementById('signupForm');
+const message = document.getElementById('message');
+
+signupForm.addEventListener('submit', function(e){
+
+  e.preventDefault();
+
+  // INPUT VALUES
+
+  const studentName = document.getElementById('studentName').value.trim();
+  const fatherName = document.getElementById('fatherName').value.trim();
+  const motherName = document.getElementById('motherName').value.trim();
+
+  const studentMobile = document.getElementById('studentMobile').value.trim();
+  const guardianMobile = document.getElementById('guardianMobile').value.trim();
+
+  const studentClass = document.getElementById('studentClass').value;
+  const schoolName = document.getElementById('schoolName').value.trim();
+
+  const dob = document.getElementById('dob').value;
+  const address = document.getElementById('address').value.trim();
+
+  const password = document.getElementById('password').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+
+  const photo = document.getElementById('photo').files[0];
+
+  const gender = document.querySelector('input[name="gender"]:checked');
+
+  // MOBILE VALIDATION
+
+  const mobilePattern = /^01[0-9]{9}$/;
+
+  // EMPTY CHECK
+
+  if(
+    studentName === '' ||
+    fatherName === '' ||
+    motherName === '' ||
+    studentMobile === '' ||
+    guardianMobile === '' ||
+    studentClass === '' ||
+    schoolName === '' ||
+    dob === '' ||
+    address === '' ||
+    password === '' ||
+    confirmPassword === ''
+  ){
+
+    message.innerHTML = 'সব তথ্য পূরণ করুন';
+    message.style.color = '#ffb3b3';
+    return;
+
+  }
+
+  // GENDER CHECK
+
+  if(!gender){
+
+    message.innerHTML = 'Gender নির্বাচন করুন';
+    message.style.color = '#ffb3b3';
+    return;
+
+  }
+
+  // MOBILE CHECK
+
+  if(
+    !mobilePattern.test(studentMobile) ||
+    !mobilePattern.test(guardianMobile)
+  ){
+
+    message.innerHTML = 'সঠিক মোবাইল নাম্বার দিন';
+    message.style.color = '#ffb3b3';
+    return;
+
+  }
+
+  // PASSWORD LENGTH
+
+  if(password.length < 6){
+
+    message.innerHTML = 'পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে';
+    message.style.color = '#ffb3b3';
+    return;
+
+  }
+
+  // PASSWORD MATCH
+
+  if(password !== confirmPassword){
+
+    message.innerHTML = 'পাসওয়ার্ড মিলছে না';
+    message.style.color = '#ffb3b3';
+    return;
+
+  }
+
+  // PHOTO CHECK
+
+  if(!photo){
+
+    message.innerHTML = 'ছবি আপলোড করুন';
+    message.style.color = '#ffb3b3';
+    return;
+
+  }
+
+  // SUCCESS
+
+  message.innerHTML = 'Admission Form Successfully Submitted ✅';
+  message.style.color = '#b8ffb8';
+
+  // RESET FORM
+
+  signupForm.reset();
+
+  // REDIRECT EXAMPLE
+
+  setTimeout(() => {
+
+    window.location.href = 'login.html';
+
+  }, 2000);
+
+});
+
+</script>
 
 </body>
 </html>
